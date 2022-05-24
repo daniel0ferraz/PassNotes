@@ -14,6 +14,7 @@ export default {
     blueGray700: '#495864',
     blueGray800: '#36444F',
     baseGray: '#CED5DA',
+    gray050: '#F8F9FA',
     gray100: '#F1F3F5',
     gray200: '#E9ECEF',
     gray300: '#DEE2E6',
