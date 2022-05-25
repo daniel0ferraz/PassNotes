@@ -10,7 +10,7 @@ import IconMail from '../../assets/icon-email.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import ButtonSocial from '../../components/ButtonSocial';
 import * as Styled from './styles';
-import { Input } from '../../components/InputField';
+import { Input } from '../../components/Input';
 export default function LoginMail() {
   return (
     <Styled.Container>
