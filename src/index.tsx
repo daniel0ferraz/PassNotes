@@ -1,13 +1,19 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
 import theme from '../src/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import LoginMail from './screens/LoginMail';
+import { SafeAreaView, StatusBar } from 'react-native';
+import LoginHub from './screens/LoginHub';
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <LoginMail />
+      <SafeAreaView>
+        <LoginHub />
+      </SafeAreaView>
     </ThemeProvider>
   );
 }
