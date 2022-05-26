@@ -9,6 +9,7 @@ import IconArrowDown from '../../assets/icon-arrowDown.svg';
 import ButtonSocial from '../../components/ButtonSocial';
 import * as Styled from './styles';
 import { View } from 'react-native';
+import Button from '../../components/Button';
 
 export default function LoginHub() {
   return (
@@ -43,7 +44,11 @@ export default function LoginHub() {
           <Styled.SingInLegend>com uma das contas a baixo</Styled.SingInLegend>
         </Styled.SingInContainer>
 
-        <ButtonSocial
+        <Button onPress={() => console.log('')} color="Blue600" size="Small">
+          Ok
+        </Button>
+
+        {/* <ButtonSocial
           onPress={() => console.log('email')}
           icon={<IconMail width={23} height={23} />}>
           Entrar com o e-mail
@@ -59,7 +64,7 @@ export default function LoginHub() {
           onPress={() => console.log('google')}
           icon={<IconGoogle width={23} height={23} />}>
           Entrar com o Google
-        </ButtonSocial>
+        </ButtonSocial> */}
       </Styled.ContainerForm>
     </Styled.Container>
   );
