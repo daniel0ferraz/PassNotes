@@ -7,11 +7,14 @@ import IconGoogle from '../../assets/icon-google.svg';
 import IconMail from '../../assets/icon-email.svg';
 import IconArrowDown from '../../assets/icon-arrowDown.svg';
 import ButtonSocial from '../../components/ButtonSocial';
-import * as Styled from './styles';
-import { View } from 'react-native';
 import Button from '../../components/Button';
+import { View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import * as Styled from './styles';
 
 export default function LoginHub() {
+  const navigation = useNavigation();
   return (
     <Styled.Container>
       <Styled.ContainerContent>
@@ -44,12 +47,12 @@ export default function LoginHub() {
           <Styled.SingInLegend>com uma das contas a baixo</Styled.SingInLegend>
         </Styled.SingInContainer>
 
-        <Button onPress={() => console.log('')} color="Blue600" size="Small">
+        {/* <Button onPress={() => console.log('')} color="Blue600" size="Small">
           Ok
-        </Button>
+        </Button> */}
 
-        {/* <ButtonSocial
-          onPress={() => console.log('email')}
+        <ButtonSocial
+          onPress={() => navigation.navigate('LoginMail')}
           icon={<IconMail width={23} height={23} />}>
           Entrar com o e-mail
         </ButtonSocial>
@@ -64,7 +67,7 @@ export default function LoginHub() {
           onPress={() => console.log('google')}
           icon={<IconGoogle width={23} height={23} />}>
           Entrar com o Google
-        </ButtonSocial> */}
+        </ButtonSocial>
       </Styled.ContainerForm>
     </Styled.Container>
   );

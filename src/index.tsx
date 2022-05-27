@@ -8,11 +8,14 @@ import LoginMail from './screens/LoginMail';
 import { SafeAreaView, StatusBar } from 'react-native';
 import LoginHub from './screens/LoginHub';
 
+import { Routes } from './routes';
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaView>
-        <LoginHub />
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar />
+        <Routes />
       </SafeAreaView>
     </ThemeProvider>
   );

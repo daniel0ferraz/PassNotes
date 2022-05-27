@@ -1,5 +1,4 @@
 import React from 'react';
-
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import IlustrationLogin from '../../assets/ilustration-login.svg';
@@ -9,14 +8,20 @@ import IconMail from '../../assets/icon-email.svg';
 
 import ButtonIcon from '../../components/ButtonIcon';
 import ButtonSocial from '../../components/ButtonSocial';
-import * as Styled from './styles';
 import { Input } from '../../components/Input';
-export default function LoginMail() {
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import * as Styled from './styles';
+
+type StackProps = {};
+
+export default function LoginMail({
+  navigation,
+}: NativeStackScreenProps<StackProps>) {
   return (
     <Styled.Container>
       <Styled.ContainerContent>
         <Styled.ContainerInfo>
-          <Styled.ButtonGoback>
+          <Styled.ButtonGoback onPress={() => navigation.goBack()}>
             <IconArrowLeft width={15} height={15} />
           </Styled.ButtonGoback>
 
@@ -47,11 +52,12 @@ export default function LoginMail() {
         </Styled.SingInContainer>
 
         <Styled.LinkRegister>
-          <Styled.ButtonLink>
+          <Styled.ButtonLink onPress={() => navigation.navigate('')}>
             <Styled.TextLink>Cadastrar-se</Styled.TextLink>
           </Styled.ButtonLink>
 
-          <Styled.ButtonLink>
+          <Styled.ButtonLink
+            onPress={() => navigation.navigate('ForgotPassword')}>
             <Styled.TextLink>Esqueci a senha</Styled.TextLink>
           </Styled.ButtonLink>
         </Styled.LinkRegister>
