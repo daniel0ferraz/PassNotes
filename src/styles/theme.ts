@@ -25,4 +25,11 @@ export default {
     warningYellow: '#FCC419',
     errorRed: '#E03131',
   },
+
+  fonts: {
+    Lexend400: '',
+    Lexend500: '',
+    Lexend700: '',
+    Lexend900: '',
+  }
 } as const;
