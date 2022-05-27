@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { TextInputProps } from 'react-native';
-import { Container, IconContainer, InputText } from './styles';
-import IconMail from '../../assets/icon-email.svg';
+import { TextInputProps, View } from 'react-native';
+import { Container, IconContainer, InputText, Icon } from './styles';
 
 export type InputProps = TextInputProps & {
   icon: any;
@@ -23,8 +22,7 @@ export function Input({ icon, value, ...rest }: InputProps) {
 
   return (
     <Container>
-      {/* {icon && icon} */}
-      <IconContainer isFocused={isFocused} />
+      <Icon>{icon && icon}</Icon>
 
       <InputText
         onFocus={handleInputFocus}

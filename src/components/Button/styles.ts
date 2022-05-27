@@ -24,6 +24,16 @@ const modifierButton = {
     width: 155px;
     height: 48px;
   `,
+
+  //
+
+  // Text Color
+  White: () => css`
+    color: ${({ theme }) => theme.colors.white};
+  `,
+  Bluetxt: () => css`
+    color: ${({ theme }) => theme.colors.blue};
+  `,
 };
 
 export const Button = styled.TouchableOpacity<Props>`
@@ -32,17 +42,17 @@ export const Button = styled.TouchableOpacity<Props>`
     justify-content: center;
     border-radius: 8px;
 
-    ${modifierButton[size]()}
+    ${!!size && modifierButton[size]()}
     ${!!color && modifierButton[color]}
   `}
 `;
 
-export const TextButton = styled.Text`
-  ${({ theme }) => css`
+export const TextButton = styled.Text<Props>`
+  ${({ textColor }) => css`
     font-size: 14px;
     font-weight: 700;
     line-height: 24px;
 
-    color: ${theme.colors.white};
+    ${!!textColor && modifierButton[textColor]};
   `}
 `;

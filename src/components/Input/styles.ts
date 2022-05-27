@@ -7,7 +7,7 @@ interface Props {
 
 export const Container = styled.View`
   flex-direction: row;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 `;
 
 export const IconContainer = styled.View<Props>`
@@ -17,26 +17,35 @@ export const IconContainer = styled.View<Props>`
   align-items: center;
 
   margin-right: 2px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 
-  ${({ isFocused }) =>
+  ${({ isFocused, theme }) =>
     isFocused &&
     css`
       border-bottom-width: 2px;
-      border-bottom-color: #dc1637;
+      border-bottom-color: ${theme.colors.blue};
     `};
 `;
 
-export const InputText = styled(TextInput)<Props>`
-  flex: 1;
-  background-color: #ffffff;
-  color: #7a7a80;
-  padding: 0 23px;
+export const Icon = styled.View`
+  position: absolute;
+  right: 30;
+  top: 12;
+`;
 
-  ${({ isFocused }) =>
-    isFocused &&
-    css`
-      border-bottom-width: 2px;
-      border-bottom-color: #dc1637;
-    `};
+export const InputText = styled(TextInput)<Props>`
+  ${({ theme, isFocused }) => css`
+    flex: 1;
+    height: 56px;
+    color: #36444f;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 0 23px;
+    margin-bottom: 10px;
+    border-bottom-width: 2px;
+    border-bottom-color: ${isFocused
+      ? theme.colors.blue
+      : theme.colors.gray300};
+  `}
 `;

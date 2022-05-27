@@ -2,12 +2,9 @@ import React from 'react';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import IlustrationLogin from '../../assets/ilustration-login.svg';
-import IconFaceBook from '../../assets/icon-facebook.svg';
-import IconGoogle from '../../assets/icon-google.svg';
-import IconMail from '../../assets/icon-email.svg';
-
+import IconMail from '../../assets/icon-mail.svg';
+import IconLock from '../../assets/icon-lock.svg';
 import ButtonIcon from '../../components/ButtonIcon';
-import ButtonSocial from '../../components/ButtonSocial';
 import { Input } from '../../components/Input';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as Styled from './styles';
@@ -35,11 +32,27 @@ export default function LoginMail({
             </Styled.LegendText>
           </Styled.BoxLegend>
         </Styled.ContainerInfo>
-
-        <IlustrationLogin width={326} height={270} />
+        <Styled.ContainerLogo>
+          <IlustrationLogin width={326} height={270} />
+        </Styled.ContainerLogo>
       </Styled.ContainerContent>
 
       <Styled.ContainerForm>
+        <Styled.ContentInput>
+          <Input
+            icon={<IconMail width={20} height={21} />}
+            placeholder="Digite seu e-mail"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <Input
+            icon={<IconLock width={16} height={21} />}
+            placeholder="Digite sua senha"
+            keyboardType="visible-password"
+            secureTextEntry
+          />
+        </Styled.ContentInput>
+
         <Styled.SingInContainer>
           <Styled.SingInText>Login</Styled.SingInText>
 
@@ -61,31 +74,6 @@ export default function LoginMail({
             <Styled.TextLink>Esqueci a senha</Styled.TextLink>
           </Styled.ButtonLink>
         </Styled.LinkRegister>
-
-        <Input
-          icon={<IconMail width={23} height={23} />}
-          placeholder="E-mail"
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <Input icon="lock" placeholder="Senha" secureTextEntry />
-        {/* <ButtonSocial
-          onPress={() => console.log('facebook')}
-          icon={<IconFaceBook width={23} height={23} />}>
-          Entrar com o Facebook
-        </ButtonSocial>
-
-        <ButtonSocial
-          onPress={() => console.log('google')}
-          icon={<IconGoogle width={23} height={23} />}>
-          Entrar com o Google
-        </ButtonSocial>
-
-        <ButtonSocial
-          onPress={() => console.log('email')}
-          icon={<IconMail width={23} height={23} />}>
-          Entrar com o e-mail
-        </ButtonSocial> */}
       </Styled.ContainerForm>
     </Styled.Container>
   );

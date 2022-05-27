@@ -7,9 +7,7 @@ import IconGoogle from '../../assets/icon-google.svg';
 import IconMail from '../../assets/icon-email.svg';
 import IconArrowDown from '../../assets/icon-arrowDown.svg';
 import ButtonSocial from '../../components/ButtonSocial';
-import Button from '../../components/Button';
-import { View } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
 import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
 

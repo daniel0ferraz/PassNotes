@@ -1,12 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 import * as React from 'react';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
-import ForgotPassword from '../screens/ForgotPassword';
-import LoginMail from '../screens/LoginMail';
 import LoginHub from '../screens/LoginHub';
+import LoginMail from '../screens/LoginMail';
+import ForgotPassword from '../screens/ForgotPassword';
 
 export function StackRoutes() {
   return (
@@ -15,16 +15,7 @@ export function StackRoutes() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Screen
-          name="LoginHub"
-          component={LoginHub}
-          options={{
-            headerShown: false,
-            headerStyle: {
-              backgroundColor: '#1971C2',
-            },
-          }}
-        />
+        <Screen name="LoginHub" component={LoginHub} />
         <Screen name="LoginMail" component={LoginMail} />
         <Screen name="ForgotPassword" component={ForgotPassword} />
       </Navigator>
