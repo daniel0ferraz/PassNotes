@@ -14,11 +14,11 @@ export const BoxText = styled.View`
 `;
 
 export const TitleBox = styled.Text`
+  font-family: 'Lexend-Bold';
   font-size: 20px;
-  font-weight: 900;
   color: #ffffff;
   line-height: 30px;
-  width: 100px;
+  width: 110px;
   align-items: center;
 `;
 
@@ -29,10 +29,10 @@ export const BoxLegend = styled.View`
 `;
 
 export const LegendText = styled.Text`
+  font-family: 'Lexend-Regular';
   font-size: 13px;
   line-height: 22px;
   color: #f8f9fa;
-  font-weight: 400;
 `;
 
 export const BoxButton = styled.View`
@@ -74,9 +74,10 @@ export const SingInContainer = styled.View`
 export const SingInText = styled.Text`
   ${({ theme }) => css`
     font-size: 20px;
-    font-weight: 700;
+    /* font-weight: 700; */
     line-height: 30px;
     color: ${theme.colors.blueGray};
+    font-family: 'Lexend-Bold';
   `}
 `;
 
@@ -84,8 +85,8 @@ export const SingInLegend = styled.Text`
   ${({ theme }) => css`
     font-size: 12px;
     line-height: 22px;
-    font-weight: 400;
     color: ${theme.colors.blueGray};
+    font-family: 'Lexend-Medium';
   `}
 `;
 

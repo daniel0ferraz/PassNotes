@@ -44,10 +44,13 @@ export default function ForgotPassword() {
           />
         </Styled.ContentInput>
         <Styled.LinkRegister>
-          <Button textColor="Bluetxt" color="Blue100">
-            Enviar
+          <Button
+            textColor="Bluetxt"
+            color="Blue100"
+            onPress={() => navigation.goBack()}>
+            Voltar
           </Button>
-          <Button onPress={() => navigation.goBack()}>Voltar</Button>
+          <Button>Enviar</Button>
         </Styled.LinkRegister>
       </Styled.ContainerForm>
     </Styled.Container>
