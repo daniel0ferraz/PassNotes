@@ -31,7 +31,7 @@ export const TitleBtn = styled.View`
 
 export const TitleBtnText = styled.Text`
   ${({ theme }) => css`
-    font-weight: 500;
+    font-family: ${theme.fonts.Lexend500};
     font-size: 14px;
     color: ${theme.colors.blueGray800};
     line-height: 24px;

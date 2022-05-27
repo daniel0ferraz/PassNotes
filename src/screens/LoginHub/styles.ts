@@ -9,17 +9,18 @@ export const Container = styled.View`
 `;
 
 export const BoxText = styled.View`
-  width: 140px;
+  width: 145px;
   height: 154px;
 `;
 
 export const TitleBox = styled.Text`
-  font-family: 'Lexend-Bold';
-  font-size: 20px;
-  color: #ffffff;
-  line-height: 30px;
-  width: 110px;
-  align-items: center;
+  ${({ theme }) => css`
+    font-family: ${theme.fonts.Lexend900};
+    font-size: 20px;
+    color: #ffffff;
+    line-height: 30px;
+    align-items: center;
+  `}
 `;
 
 export const BoxLegend = styled.View`
@@ -29,10 +30,12 @@ export const BoxLegend = styled.View`
 `;
 
 export const LegendText = styled.Text`
-  font-family: 'Lexend-Regular';
-  font-size: 13px;
-  line-height: 22px;
-  color: #f8f9fa;
+  ${({ theme }) => css`
+    font-family: ${theme.fonts.Lexend400};
+    font-size: 13px;
+    line-height: 22px;
+    color: #f8f9fa;
+  `}
 `;
 
 export const BoxButton = styled.View`
@@ -77,7 +80,7 @@ export const SingInText = styled.Text`
     /* font-weight: 700; */
     line-height: 30px;
     color: ${theme.colors.blueGray};
-    font-family: 'Lexend-Bold';
+    font-family: ${theme.fonts.Lexend700};
   `}
 `;
 
@@ -86,12 +89,6 @@ export const SingInLegend = styled.Text`
     font-size: 12px;
     line-height: 22px;
     color: ${theme.colors.blueGray};
-    font-family: 'Lexend-Medium';
+    font-family: ${theme.fonts.Lexend400};
   `}
-`;
-
-export const LinkRegister = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 `;

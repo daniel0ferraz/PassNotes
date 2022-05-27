@@ -63,9 +63,9 @@ export default function LoginMail({
             onPress={() => console.log('login')}
           />
         </Styled.SingInContainer>
-
         <Styled.LinkRegister>
-          <Styled.ButtonLink onPress={() => navigation.navigate('')}>
+          <Styled.ButtonLink
+            onPress={() => navigation.navigate('RegisterMail')}>
             <Styled.TextLink>Cadastrar-se</Styled.TextLink>
           </Styled.ButtonLink>
 

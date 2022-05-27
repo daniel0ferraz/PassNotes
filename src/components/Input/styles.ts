@@ -38,7 +38,7 @@ export const InputText = styled(TextInput)<Props>`
     flex: 1;
     height: 56px;
     color: #36444f;
-    font-weight: 400;
+    font-family: ${theme.fonts.Lexend400};
     font-size: 14px;
     line-height: 24px;
     padding: 0 23px;

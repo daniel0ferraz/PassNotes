@@ -15,8 +15,8 @@ export const ContainerContent = styled.View`
 `;
 
 export const BoxText = styled.View`
-  width: 131px;
-  height: 80px;
+  width: 140px;
+  height: 162px;
 `;
 
 export const TitleBox = styled.Text`
@@ -29,30 +29,15 @@ export const TitleBox = styled.Text`
   `}
 `;
 
-export const BoxLegend = styled.View`
-  width: 93px;
-  height: 61px;
-  margin-top: 16px;
-`;
-
-export const LegendText = styled.Text`
-  ${({ theme }) => css`
-    font-size: 12px;
-    line-height: 22px;
-    color: #f8f9fa;
-    font-family: ${theme.fonts.Lexend400};
-  `}
-`;
-
 export const ContainerInfo = styled.View`
   padding: 30px 0px 20px 18px;
 `;
 
 export const ContainerLogo = styled.View`
-  width: 240px;
-  height: 245px;
-  top: 130;
-  left: -25;
+  width: 195px;
+  height: 233px;
+  top: 160;
+  /* left: -39; */
 `;
 
 export const ButtonGoback = styled.TouchableOpacity`
@@ -64,17 +49,13 @@ export const ContainerForm = styled.View`
   margin-top: 150px;
 `;
 
-export const ContentInput = styled.View`
-  /* background: red; */
-  margin-bottom: 50px;
-`;
-
 export const SingInContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  padding-bottom: 32px;
+  padding-top: 23px;
+  padding-bottom: 41px;
 `;
 
 export const SingInText = styled.Text`
@@ -87,7 +68,7 @@ export const SingInText = styled.Text`
 `;
 
 export const LinkRegister = styled.View`
-  margin-top: 30px;
+  /* margin-top: 30px; */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

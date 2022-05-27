@@ -27,9 +27,9 @@ export default {
   },
 
   fonts: {
-    Lexend400: '',
-    Lexend500: '',
-    Lexend700: '',
-    Lexend900: '',
-  }
+    Lexend400: 'Lexend-Regular',
+    Lexend500: 'Lexend-Medium',
+    Lexend700: 'Lexend-Bold',
+    Lexend900: 'Lexend-ExtraBold',
+  },
 } as const;

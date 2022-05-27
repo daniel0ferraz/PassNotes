@@ -48,9 +48,9 @@ export const Button = styled.TouchableOpacity<Props>`
 `;
 
 export const TextButton = styled.Text<Props>`
-  ${({ textColor }) => css`
+  ${({ theme, textColor }) => css`
     font-size: 14px;
-    font-weight: 700;
+    font-family: ${theme.fonts.Lexend700};
     line-height: 24px;
 
     ${!!textColor && modifierButton[textColor]};

@@ -13,16 +13,17 @@ export const ContainerContent = styled.View`
 `;
 
 export const BoxText = styled.View`
-  width: 162px;
-  /* height: 80px; */
+  width: 183px;
 `;
 
 export const TitleBox = styled.Text`
-  font-size: 20px;
-  font-weight: 900;
-  color: #ffffff;
-  line-height: 30px;
-  align-items: center;
+  ${({ theme }) => css`
+    font-size: 20px;
+    font-family: ${theme.fonts.Lexend900};
+    color: #ffffff;
+    line-height: 30px;
+    align-items: center;
+  `}
 `;
 
 export const ContainerInfo = styled.View`
@@ -55,7 +56,7 @@ export const SingInContainer = styled.View`
 export const SingInText = styled.Text`
   ${({ theme }) => css`
     font-size: 20px;
-    font-weight: 700;
+    font-family: ${theme.fonts.Lexend700};
     line-height: 30px;
     color: ${theme.colors.blueGray};
   `}
@@ -66,7 +67,7 @@ export const SingInLegend = styled.Text`
     width: 241px;
     font-size: 12px;
     line-height: 22px;
-    font-weight: 400;
+    font-family: ${theme.fonts.Lexend400};
     color: ${theme.colors.blueGray};
   `}
 `;

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
 import IlustrationRegister from '../../assets/ilustration-register.svg';
@@ -19,7 +18,7 @@ export default function LoginHub() {
         <Styled.ContainerInfo>
           <Styled.BoxText>
             <Styled.TitleBox>
-              Tenha sempre aceso facíl às suas senhas
+              Tenha sempre acesso facíl às suas senhas
             </Styled.TitleBox>
           </Styled.BoxText>
 

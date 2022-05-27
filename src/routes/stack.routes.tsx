@@ -6,6 +6,7 @@ const { Screen, Navigator } = createNativeStackNavigator();
 import LoginHub from '../screens/LoginHub';
 import LoginMail from '../screens/LoginMail';
 import ForgotPassword from '../screens/ForgotPassword';
+import RegisterMail from './../screens/RegisterMail';
 
 export function StackRoutes() {
   return (
@@ -17,6 +18,7 @@ export function StackRoutes() {
         <Screen name="LoginHub" component={LoginHub} />
         <Screen name="LoginMail" component={LoginMail} />
         <Screen name="ForgotPassword" component={ForgotPassword} />
+        <Screen name="RegisterMail" component={RegisterMail} />
       </Navigator>
     </>
   );
