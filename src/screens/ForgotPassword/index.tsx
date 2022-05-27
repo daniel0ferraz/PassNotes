@@ -1,12 +1,10 @@
 import React from 'react';
-
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IlustrationLogin from '../../assets/ilustration-esqueci-senha.svg';
 import Button from '../../components/Button';
 import IconMail from '../../assets/icon-mail.svg';
 import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
-import { View } from 'react-native';
 import { Input } from '../../components/Input';
 
 export default function ForgotPassword() {
