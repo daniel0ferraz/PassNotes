@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
+import { View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import Singof from '../../assets/icon-singof.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
