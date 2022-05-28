@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, ScrollView, Alrt } from 'react-native';
+import { View, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
-import * as Styled from './styles';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getLogo } from '../../components/InputInfo/logo';
+
+import * as Styled from './styles';
 
 export default function RegisterItem() {
   const navigation = useNavigation();
 
+  const [icon, setIcon] = useState({ icon: false });
   const [data, setData] = useState({
     logo: '',
     url: '',
@@ -67,7 +71,11 @@ export default function RegisterItem() {
               <InputInfo
                 placeholder="Digite o nome do site"
                 value={data.logo}
-                onChangeText={text => setData({ ...data, logo: text })}
+                onChangeText={(text: string) => {
+                  setData({ ...data, logo: text });
+                  setIcon(getLogo(text));
+                }}
+                icon={icon?.icon}
               />
             </Styled.InputFieldContainer>
 
