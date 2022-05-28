@@ -4,6 +4,7 @@ import Singof from '../../assets/icon-singof.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
+import CardPass from '../../components/CardPass';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -41,6 +42,9 @@ export default function Home() {
 
             <Styled.ContentInfo>
               <Text>FlatList aqui!</Text>
+              <CardPass secureTextEntry />
+              <CardPass secureTextEntry />
+              <CardPass secureTextEntry />
             </Styled.ContentInfo>
           </Styled.Header>
         </ScrollView>
