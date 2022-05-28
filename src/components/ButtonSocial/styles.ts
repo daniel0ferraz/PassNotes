@@ -6,7 +6,7 @@ export const ContainerBtnSocial = styled.TouchableOpacity`
     height: 49px;
     border: 1px solid ${theme.colors.gray300};
     border-radius: 8px;
-    background-color: ${theme.colors.gray050};
+    background: ${theme.colors.gray050};
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
@@ -17,7 +17,7 @@ export const IconBtnSocial = styled.View`
   ${({ theme }) => css`
     width: 49px;
     height: 49px;
-    background-color: ${theme.colors.gray050};
+    background: ${theme.colors.gray050};
     border: 1px solid ${theme.colors.gray300};
     justify-content: center;
     align-items: center;

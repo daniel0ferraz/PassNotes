@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { TextInputProps, View } from 'react-native';
-import { Container, IconContainer, InputText, Icon } from './styles';
+import { TextInputProps } from 'react-native';
+import { Container, InputText, Icon } from './styles';
 
 export type InputProps = TextInputProps & {
   icon: any;

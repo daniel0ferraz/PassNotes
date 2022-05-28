@@ -1,12 +1,10 @@
 import React from 'react';
-
 import IlustrationRegister from '../../assets/ilustration-register.svg';
 import IconFaceBook from '../../assets/icon-facebook.svg';
 import IconGoogle from '../../assets/icon-google.svg';
 import IconMail from '../../assets/icon-email.svg';
 import IconArrowDown from '../../assets/icon-arrowDown.svg';
 import ButtonSocial from '../../components/ButtonSocial';
-
 import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
 
@@ -43,10 +41,6 @@ export default function LoginHub() {
           <Styled.SingInText>Faça seu login</Styled.SingInText>
           <Styled.SingInLegend>com uma das contas a baixo</Styled.SingInLegend>
         </Styled.SingInContainer>
-
-        {/* <Button onPress={() => console.log('')} color="Blue600" size="Small">
-          Ok
-        </Button> */}
 
         <ButtonSocial
           onPress={() => navigation.navigate('LoginMail')}

@@ -6,14 +6,11 @@ import IconMail from '../../assets/icon-mail.svg';
 import IconLock from '../../assets/icon-lock.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import { Input } from '../../components/Input';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
 
-type StackProps = {};
-
-export default function LoginMail({
-  navigation,
-}: NativeStackScreenProps<StackProps>) {
+export default function LoginMail() {
+  const navigation = useNavigation();
   return (
     <Styled.Container>
       <Styled.ContainerContent>
@@ -60,7 +57,7 @@ export default function LoginMail({
             icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
             color="Blue"
             format="square"
-            onPress={() => console.log('login')}
+            onPress={() => navigation.navigate('Home')}
           />
         </Styled.SingInContainer>
         <Styled.LinkRegister>

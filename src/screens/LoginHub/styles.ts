@@ -24,7 +24,7 @@ export const TitleBox = styled.Text`
 `;
 
 export const BoxLegend = styled.View`
-  width: 80px;
+  width: 85px;
   height: 47px;
   margin-top: 16px;
 `;
@@ -64,7 +64,10 @@ export const ContainerContent = styled.View`
 `;
 
 export const ContainerForm = styled.View`
-  padding: 60px 20px;
+  ${({ theme }) => css`
+    padding: 60px 20px;
+    background: ${theme.colors.white};
+  `}
 `;
 
 export const SingInContainer = styled.View`

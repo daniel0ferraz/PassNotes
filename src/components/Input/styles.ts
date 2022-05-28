@@ -10,23 +10,6 @@ export const Container = styled.View`
   /* margin-bottom: 8px; */
 `;
 
-export const IconContainer = styled.View<Props>`
-  height: 56px;
-  width: 55px;
-  justify-content: center;
-  align-items: center;
-
-  margin-right: 2px;
-  /* background-color: #ffffff; */
-
-  ${({ isFocused, theme }) =>
-    isFocused &&
-    css`
-      border-bottom-width: 2px;
-      border-bottom-color: ${theme.colors.blue};
-    `};
-`;
-
 export const Icon = styled.View`
   position: absolute;
   right: 30;
