@@ -10,7 +10,6 @@ export type InputProps = TextInputProps & {
 };
 
 export default function InputInfo({ icon, ...rest }: InputProps) {
-  console.log(icon);
   return (
     <Styled.Container>
       <Styled.BoxIcon>
