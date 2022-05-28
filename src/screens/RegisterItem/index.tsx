@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, ScrollView, Alert } from 'react-native';
+import { View, SafeAreaView, StatusBar, ScrollView, Alrt } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import * as Styled from './styles';
+import InputInfo from '../../components/InputInfo';
+import InputInfo2 from '../../components/InputInfo2';
 
 export default function RegisterItem() {
   const navigation = useNavigation();
 
   const [data, setData] = useState({
     logo: '',
-    site: '',
     url: '',
+    login: '',
+    password: '',
   });
 
   function handleSubmit(data) {
-    if (data.site === '' || data.url === '') {
+    if (data.site === '' || data.password === '') {
       return;
     } else {
       console.log(data);
@@ -27,8 +30,9 @@ export default function RegisterItem() {
   function handleClear() {
     setData({
       logo: '',
-      site: '',
       url: '',
+      login: '',
+      password: '',
     });
   }
   return (
@@ -60,18 +64,34 @@ export default function RegisterItem() {
 
           <Styled.ContentForm>
             <Styled.InputFieldContainer>
-              <InputField
+              <InputInfo
                 placeholder="Digite o nome do site"
-                value={data.site}
-                onChangeText={text => setData({ ...data, site: text })}
+                value={data.logo}
+                onChangeText={text => setData({ ...data, logo: text })}
+              />
+            </Styled.InputFieldContainer>
+
+            <Styled.InputFieldContainer>
+              <InputInfo2
+                placeholder="Digite a url do site"
+                value={data.url}
+                onChangeText={text => setData({ ...data, url: text })}
               />
             </Styled.InputFieldContainer>
 
             <Styled.InputFieldContainer>
               <InputField
-                placeholder="Digite a url do site"
-                value={data.url}
-                onChangeText={text => setData({ ...data, url: text })}
+                placeholder="Digite seu login de acesso "
+                value={data.login}
+                onChangeText={text => setData({ ...data, login: text })}
+              />
+            </Styled.InputFieldContainer>
+
+            <Styled.InputFieldContainer>
+              <InputField
+                placeholder="Digite a senha"
+                value={data.password}
+                onChangeText={text => setData({ ...data, password: text })}
               />
             </Styled.InputFieldContainer>
 
