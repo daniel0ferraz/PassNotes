@@ -52,3 +52,8 @@ export const SingOut = styled.TouchableOpacity``;
 export const ContentInfo = styled.View`
   margin-top: 24px;
 `;
+
+export const ContentCards = styled.View`
+  padding: 40px 24px;
+  margin-top: 60px;
+`;

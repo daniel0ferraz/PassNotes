@@ -5,6 +5,7 @@ import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
 import * as Styled from './styles';
 import CardPass from '../../components/CardPass';
+import FabButton from '../../components/FabButton';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -39,14 +40,20 @@ export default function Home() {
             <Styled.ContentInfo>
               <InfoRegisters />
             </Styled.ContentInfo>
-
-            <Styled.ContentInfo>
-              <Text>FlatList aqui!</Text>
-              <CardPass secureTextEntry />
-              <CardPass secureTextEntry />
-              <CardPass secureTextEntry />
-            </Styled.ContentInfo>
+            <FabButton />
           </Styled.Header>
+
+          <Styled.ContentCards>
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+            <CardPass secureTextEntry />
+          </Styled.ContentCards>
         </ScrollView>
       </SafeAreaView>
     </>
