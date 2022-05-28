@@ -52,7 +52,6 @@ export default function Home() {
             <CardPass secureTextEntry />
             <CardPass secureTextEntry />
             <CardPass secureTextEntry />
-            <CardPass secureTextEntry />
           </Styled.ContentCards>
         </ScrollView>
       </SafeAreaView>

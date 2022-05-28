@@ -3,8 +3,9 @@ import styled, { css } from 'styled-components/native';
 
 export const Header = styled.View`
   ${({ theme }) => css`
-    background-color: ${theme.colors.blue800};
+    background-color: ${theme.colors.blue700};
     width: 100%;
+    height: ${Dimensions.get('window').height};
     padding: 40px 24px;
   `}
 `;
@@ -54,6 +55,16 @@ export const ContentInfo = styled.View`
 `;
 
 export const ContentForm = styled.View`
-  padding: 40px 24px;
   margin-top: 60px;
+`;
+
+export const InputFieldContainer = styled.View`
+  margin-bottom: 24px;
+`;
+
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  margin-top: 24px;
+  justify-content: space-between;
+  align-items: center;
 `;
