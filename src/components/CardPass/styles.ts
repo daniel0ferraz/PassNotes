@@ -1,7 +1,7 @@
 import { Dimensions, TextInput } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
-export const Card = styled.View`
+export const Card = styled.TouchableOpacity`
   ${({ theme }) => css`
     width: 100%;
     height: 56px;

@@ -1,34 +1,77 @@
 import React, { useState } from 'react';
 
-import { Text, TextInputProps, View } from 'react-native';
+import { TextInputProps, View } from 'react-native';
 
 import IconEye from '../../assets/icon-eye.svg';
 import IconEyeOff from '../../assets/icon-eye_off.svg';
 import IconCopy from '../../assets/icon-copy.svg';
+import IconFacebook from '../../assets/icon-facebook.svg';
+import IconGoogle from '../../assets/icon-google.svg';
+import IconFigma from '../../assets/figma.svg';
+import IconGithub from '../../assets/github.svg';
+import IconTwiter from '../../assets/twitter.svg';
+import IconTwitch from '../../assets/twitch.svg';
+import IconNotion from '../../assets/notion.svg';
+import { PropsCard } from './types';
 
 import * as Styled from './styles';
 
 export type InputProps = TextInputProps & {
-  icon?: any;
+  data: PropsCard;
   secureTextEntry?: boolean;
 };
 
 export default function CardPass({
   secureTextEntry,
-  icon,
+  data,
   ...rest
 }: InputProps) {
   const [sec, setSec] = useState(secureTextEntry);
 
+  const Iconsbrand = () => {
+    switch (data?.logo) {
+      case 'Facebook': {
+        return <IconFacebook width={18} height={18} />;
+      }
+      case 'Google': {
+        return <IconGoogle width={18} height={18} />;
+      }
+
+      case 'Figma': {
+        return <IconFigma width={18} height={18} />;
+      }
+
+      case 'Github': {
+        return <IconGithub width={18} height={18} />;
+      }
+
+      case 'Twiter': {
+        return <IconTwiter width={18} height={18} />;
+      }
+
+      case 'Twitch': {
+        return <IconTwitch width={18} height={18} />;
+      }
+
+      case 'Notion': {
+        return <IconNotion width={18} height={18} />;
+      }
+
+      default:
+        '';
+    }
+  };
+
   return (
     <>
       <Styled.Card>
-        <Styled.Icon>{icon && icon}</Styled.Icon>
+        <Styled.Icon>{Iconsbrand()}</Styled.Icon>
         <View>
           <Styled.InputText
             underlineColorAndroid="trasparent"
             secureTextEntry={sec}
-            // editable={false}
+            value={data?.password}
+            editable={false}
             {...rest}
           />
 
