@@ -12,7 +12,8 @@ import IconGithub from '../../assets/github.svg';
 import IconTwiter from '../../assets/twitter.svg';
 import IconTwitch from '../../assets/twitch.svg';
 import IconNotion from '../../assets/notion.svg';
-import { PropsCard } from './types';
+import { PropsCard } from '../../@types/Card';
+import { useNavigation } from '@react-navigation/native';
 
 import * as Styled from './styles';
 
@@ -26,6 +27,7 @@ export default function CardPass({
   data,
   ...rest
 }: InputProps) {
+  const navigation = useNavigation();
   const [sec, setSec] = useState(secureTextEntry);
 
   const Iconsbrand = () => {
@@ -64,7 +66,7 @@ export default function CardPass({
 
   return (
     <>
-      <Styled.Card>
+      <Styled.Card onPress={() => navigation.navigate('RegisterItem', data)}>
         <Styled.Icon>{Iconsbrand()}</Styled.Icon>
         <View>
           <Styled.InputText

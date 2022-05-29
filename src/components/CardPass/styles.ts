@@ -42,12 +42,12 @@ export const InputText = styled(TextInput)`
 
 export const IconButton = styled.TouchableOpacity`
   position: absolute;
-  right: 40;
-  top: 10;
+  right: 40px;
+  top: 10px;
 `;
 
 export const IconButton2 = styled.TouchableOpacity`
   position: absolute;
-  right: 8;
-  top: 10;
+  right: 8px;
+  top: 10px;
 `;

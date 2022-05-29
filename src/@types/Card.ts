@@ -1,5 +1,5 @@
 export type PropsCard = {
-  id: any;
+  id: string | number;
   logo: string;
   url: string;
   login: string;

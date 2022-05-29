@@ -33,8 +33,8 @@ export const ContainerInfo = styled.View`
 export const ContainerLogo = styled.View`
   width: 380px;
   height: 252px;
-  top: 170;
-  left: -148;
+  top: 170px;
+  left: -148px;
 `;
 
 export const ButtonGoback = styled.TouchableOpacity`

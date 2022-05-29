@@ -7,13 +7,12 @@ interface Props {
 
 export const Container = styled.View`
   flex-direction: row;
-  /* margin-bottom: 8px; */
 `;
 
 export const Icon = styled.View`
   position: absolute;
-  right: 30;
-  top: 12;
+  right: 30px;
+  top: 12px;
 `;
 
 export const InputText = styled(TextInput)<Props>`

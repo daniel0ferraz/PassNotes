@@ -1,11 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import {
-  View,
-  SafeAreaView,
-  StatusBar,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, SafeAreaView, StatusBar, FlatList } from 'react-native';
 import Singof from '../../assets/icon-singof.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +8,7 @@ import CardPass from '../../components/CardPass';
 import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import { PropsCard } from '../../components/CardPass/types';
+import { PropsCard } from '../../@types/Card';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -24,6 +18,7 @@ export default function Home() {
 
   async function handleFetchData() {
     const response = await getItem();
+
     const data = response ? JSON.parse(response) : [];
     setData(data);
     console.log(data.length);
@@ -39,47 +34,38 @@ export default function Home() {
     <>
       <SafeAreaView>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: 420,
-            flexGrow: 1,
-          }}>
-          <Styled.Header>
-            <Styled.HeaderInfo>
-              <View>
-                <Styled.BoxUser>
-                  <Styled.IconUser />
-                  <Styled.Info>Olá,</Styled.Info>
-                  <Styled.InfoName>Daniel</Styled.InfoName>
-                </Styled.BoxUser>
-              </View>
 
-              <View>
-                <Styled.SingOut onPress={() => navigation.navigate('LoginHub')}>
-                  <Singof width={19} height={19} />
-                </Styled.SingOut>
-              </View>
-            </Styled.HeaderInfo>
+        <Styled.Header>
+          <Styled.HeaderInfo>
+            <View>
+              <Styled.BoxUser>
+                <Styled.IconUser />
+                <Styled.Info>Olá,</Styled.Info>
+                <Styled.InfoName>Daniel</Styled.InfoName>
+              </Styled.BoxUser>
+            </View>
 
-            <Styled.ContentInfo>
-              <InfoRegisters count={data} />
-            </Styled.ContentInfo>
-            <FabButton />
-          </Styled.Header>
+            <View>
+              <Styled.SingOut onPress={() => navigation.navigate('LoginHub')}>
+                <Singof width={19} height={19} />
+              </Styled.SingOut>
+            </View>
+          </Styled.HeaderInfo>
 
-          <Styled.ContentCards>
-            <FlatList
-              data={data}
-              horizontal={false}
-              keyExtractor={(item: PropsCard) => String(item.id)}
-              renderItem={({ item }) => (
-                <CardPass data={item} secureTextEntry />
-              )}
-            />
-          </Styled.ContentCards>
-        </ScrollView>
+          <Styled.ContentInfo>
+            <InfoRegisters count={data} />
+          </Styled.ContentInfo>
+          <FabButton />
+        </Styled.Header>
+
+        <Styled.ContentCards>
+          <FlatList
+            data={data}
+            horizontal={false}
+            keyExtractor={(item: PropsCard) => String(item.id)}
+            renderItem={({ item }) => <CardPass data={item} secureTextEntry />}
+          />
+        </Styled.ContentCards>
       </SafeAreaView>
     </>
   );

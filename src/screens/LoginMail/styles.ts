@@ -51,8 +51,8 @@ export const ContainerInfo = styled.View`
 export const ContainerLogo = styled.View`
   width: 240px;
   height: 245px;
-  top: 130;
-  left: -25;
+  top: 130px;
+  left: -25px;
 `;
 
 export const ButtonGoback = styled.TouchableOpacity`
@@ -65,7 +65,6 @@ export const ContainerForm = styled.View`
 `;
 
 export const ContentInput = styled.View`
-  /* background: red; */
   margin-bottom: 50px;
 `;
 
