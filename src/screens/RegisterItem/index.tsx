@@ -54,7 +54,7 @@ export default function RegisterItem() {
     const previousData = response ? JSON.parse(response) : [];
 
     handleClear();
-    const newData = previousData.filter((itens: PropsCard) => itens.id !== id);
+    const newData = previousData.filter(itens => itens.id !== id);
     await setItem(JSON.stringify(newData));
     setData(data);
   }
@@ -99,10 +99,10 @@ export default function RegisterItem() {
               <Styled.InputFieldContainer>
                 <InputInfo
                   placeholder="Digite o nome do site"
-                  value={data.logo || itens.logo}
+                  value={data.logo || itens?.logo}
                   onChangeText={(text: string) => {
                     setData({ ...data, logo: text });
-                    setIcon(getLogo(text || itens.logo));
+                    setIcon(getLogo(text || itens?.logo));
                   }}
                   icon={icon?.icon || itens?.logo}
                 />
@@ -113,8 +113,8 @@ export default function RegisterItem() {
                   placeholder="Digite a url do site"
                   autoCapitalize="none"
                   keyboardType="web-search"
-                  value={data.url || itens.url}
-                  // onChangeText={text => setData({ ...data, url: text })}
+                  value={data.url || itens?.url}
+                  onChangeText={text => setData({ ...data, url: text })}
                 />
               </Styled.InputFieldContainer>
 
@@ -123,7 +123,7 @@ export default function RegisterItem() {
                   placeholder="Digite seu login de acesso "
                   autoCapitalize="none"
                   keyboardType="email-address"
-                  value={data.login || itens.login}
+                  value={data.login || itens?.login}
                   onChangeText={text => setData({ ...data, login: text })}
                 />
               </Styled.InputFieldContainer>
@@ -132,7 +132,7 @@ export default function RegisterItem() {
                 <InputField
                   placeholder="Digite a senha"
                   autoCapitalize="none"
-                  value={data.password || itens.password}
+                  value={data.password || itens?.password}
                   onChangeText={text => setData({ ...data, password: text })}
                 />
               </Styled.InputFieldContainer>
@@ -141,7 +141,7 @@ export default function RegisterItem() {
                 <Button
                   size="Medium"
                   onPress={() => {
-                    handleSubmit(data);
+                    handleSubmit();
                   }}>
                   Salvar
                 </Button>
@@ -149,7 +149,7 @@ export default function RegisterItem() {
                   size="Medium"
                   onPress={() => {
                     // handleClear();
-                    handleRemove(itens.id);
+                    handleRemove(itens?.id);
                   }}>
                   Excluir
                 </Button>
