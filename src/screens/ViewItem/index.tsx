@@ -31,6 +31,7 @@ export default function ViewItem() {
     password: '',
   } as PropsCard);
   const [error, setError] = useState(false);
+  const [sucess, setSucess] = useState(false);
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
@@ -52,25 +53,30 @@ export default function ViewItem() {
 
         const newData = [...previousData, data];
         await setItem(JSON.stringify(newData));
-
-        Alert.alert('Sucesso', 'Item adicionado com sucesso!');
+        setSucess(true);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  // async function handleRemove(id: string) {
-  //   const response = await getItem();
-  //   const previousData = response ? JSON.parse(response) : [];
+  async function handleRemove(id: string) {
+    const response = await getItem();
+    const previousData = response ? JSON.parse(response) : [];
 
-  //   handleClear();
-  //   const newData = previousData.filter(itens => itens.id !== id);
-  //   await setItem(JSON.stringify(newData));
-  //   setData(data);
-  // }
+    const newData = previousData.filter(itens => itens.id !== id);
+    await setItem(JSON.stringify(newData));
+    setData(data);
+  }
 
   function handleClear() {
+    setData({
+      id: '',
+      logo: '',
+      url: '',
+      login: '',
+      password: '',
+    });
     itens.logo = '';
     itens.url = '';
     itens.login = '';
@@ -79,7 +85,6 @@ export default function ViewItem() {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
-
       <Styled.Header>
         <Styled.HeaderInfo>
           <View>
@@ -107,7 +112,7 @@ export default function ViewItem() {
                 setData({ ...data, logo: text });
                 setIcon(getLogo(text || itens?.logo));
               }}
-              icon={icon?.icon || itens?.logo}
+              icon={itens?.logo}
             />
           </Styled.InputFieldContainer>
 
@@ -150,11 +155,21 @@ export default function ViewItem() {
               }}>
               Salvar
             </Button>
-            <Button size="Medium" onPress={handleClear}>
+            <Button
+              size="Medium"
+              onPress={() => {
+                handleRemove(itens.id);
+                handleClear();
+              }}>
               Excluir
             </Button>
           </Styled.ButtonContainer>
         </Styled.ContentForm>
+        {sucess && (
+          <Styled.Alert>
+            <PopUp title="Senha registrada com sucesso!" alert="success" />
+          </Styled.Alert>
+        )}
         {error && (
           <Styled.Alert>
             <PopUp title="Você deve preencher todos os dados" alert="alert" />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
@@ -17,11 +17,6 @@ import PopUp from '../../components/PopUp';
 
 export default function RegisterItem() {
   const navigation = useNavigation();
-  const route = useRoute();
-
-  const itens = route.params as PropsCard;
-
-  console.log('itens:', itens);
 
   const id = uuid.v4();
   const [icon, setIcon] = useState({ icon: false });
@@ -34,6 +29,7 @@ export default function RegisterItem() {
   } as PropsCard);
 
   const [error, setError] = useState(false);
+  const [sucess, setSucess] = useState(false);
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
@@ -56,22 +52,22 @@ export default function RegisterItem() {
         const newData = [...previousData, data];
         await setItem(JSON.stringify(newData));
 
-        Alert.alert('Sucesso', 'Item adicionado com sucesso!');
+        setSucess(true);
+        handleClear();
       }
     } catch (error) {
       console.log(error);
     }
   }
 
-  // async function handleRemove(id: string) {
-  //   const response = await getItem();
-  //   const previousData = response ? JSON.parse(response) : [];
+  async function handleRemove(id: string) {
+    const response = await getItem();
+    const previousData = response ? JSON.parse(response) : [];
 
-  //   handleClear();
-  //   const newData = previousData.filter(itens => itens.id !== id);
-  //   await setItem(JSON.stringify(newData));
-  //   setData(data);
-  // }
+    const newData = previousData.filter(item => item.id !== id);
+    await setItem(JSON.stringify(newData));
+    setData(data);
+  }
 
   function handleClear() {
     setData({
@@ -109,12 +105,12 @@ export default function RegisterItem() {
             <Styled.InputFieldContainer>
               <InputInfo
                 placeholder="Digite o nome do site"
-                value={data.logo || itens?.logo}
+                value={data.logo}
                 onChangeText={(text: string) => {
                   setData({ ...data, logo: text });
-                  setIcon(getLogo(text || itens?.logo));
+                  setIcon(getLogo(text));
                 }}
-                icon={icon?.icon || itens?.logo}
+                icon={icon?.icon}
               />
             </Styled.InputFieldContainer>
 
@@ -123,7 +119,7 @@ export default function RegisterItem() {
                 placeholder="Digite a url do site"
                 autoCapitalize="none"
                 keyboardType="web-search"
-                value={data.url || itens?.url}
+                value={data.url}
                 onChangeText={text => setData({ ...data, url: text })}
               />
             </Styled.InputFieldContainer>
@@ -133,7 +129,7 @@ export default function RegisterItem() {
                 placeholder="Digite seu login de acesso "
                 autoCapitalize="none"
                 keyboardType="email-address"
-                value={data.login || itens?.login}
+                value={data.login}
                 onChangeText={text => setData({ ...data, login: text })}
               />
             </Styled.InputFieldContainer>
@@ -142,7 +138,7 @@ export default function RegisterItem() {
               <InputField
                 placeholder="Digite a senha"
                 autoCapitalize="none"
-                value={data.password || itens?.password}
+                value={data.password}
                 onChangeText={text => setData({ ...data, password: text })}
               />
             </Styled.InputFieldContainer>
@@ -155,11 +151,21 @@ export default function RegisterItem() {
                 }}>
                 Salvar
               </Button>
-              <Button size="Medium" onPress={handleClear}>
+              <Button
+                size="Medium"
+                onPress={() => {
+                  handleRemove(id);
+                  handleClear();
+                }}>
                 Excluir
               </Button>
             </Styled.ButtonContainer>
           </Styled.ContentForm>
+          {sucess && (
+            <Styled.Alert>
+              <PopUp title="Senha registrada com sucesso!" alert="success" />
+            </Styled.Alert>
+          )}
           {error && (
             <Styled.Alert>
               <PopUp title="Você deve preencher todos os dados" alert="alert" />

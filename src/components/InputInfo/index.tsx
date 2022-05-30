@@ -10,10 +10,14 @@ import IconGithub from '../../assets/github.svg';
 import IconTwiter from '../../assets/twitter.svg';
 import IconTwitch from '../../assets/twitch.svg';
 import IconNotion from '../../assets/notion.svg';
+import Instagram from '../../assets/instagram.svg';
+import Slack from '../../assets/slack.svg';
+import Outlook from '../../assets/outlook.svg';
+import RocketChat from '../../assets/rocketchat.svg';
 import * as Styled from './styles';
 
 export type InputProps = TextInputProps & {
-  icon: any;
+  icon: string;
 };
 
 export default function InputInfo({ icon, ...rest }: InputProps) {
@@ -45,6 +49,18 @@ export default function InputInfo({ icon, ...rest }: InputProps) {
       case 'Notion': {
         return <IconNotion width={18} height={18} />;
       }
+      case 'Instagram': {
+        return <Instagram width={18} height={18} />;
+      }
+      case 'Slack': {
+        return <Slack width={18} height={18} />;
+      }
+      case 'Outlook': {
+        return <Outlook width={18} height={18} />;
+      }
+      case 'RocketChat': {
+        return <RocketChat width={18} height={18} />;
+      }
 
       default:
         return <IconWord width={18} height={18} />;
@@ -53,7 +69,7 @@ export default function InputInfo({ icon, ...rest }: InputProps) {
   return (
     <Styled.Container>
       <Styled.BoxIcon>
-        <Text>{Iconsbrand()}</Text>
+        <Text>{icon && icon}</Text>
       </Styled.BoxIcon>
       <Styled.InputInfoName placeholderTextColor={'#A5D8FF'} {...rest} />
       <Styled.BoxIcon2>
