@@ -9,7 +9,6 @@ import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { PropsCard } from '../../@types/Card';
-import Tes from '../../components/Tes';
 
 export default function Home() {
   const navigation = useNavigation();

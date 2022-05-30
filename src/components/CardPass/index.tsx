@@ -66,7 +66,7 @@ export default function CardPass({
 
   return (
     <>
-      <Styled.Card onPress={() => navigation.navigate('RegisterItem', data)}>
+      <Styled.Card onPress={() => navigation.navigate('ViewItem', data)}>
         <Styled.Icon>{Iconsbrand()}</Styled.Icon>
         <View>
           <Styled.InputText
