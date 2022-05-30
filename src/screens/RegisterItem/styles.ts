@@ -68,3 +68,8 @@ export const ButtonContainer = styled.View`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const Alert = styled.View`
+  flex: 1;
+  position: absolute;
+`;

@@ -9,6 +9,7 @@ import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { PropsCard } from '../../@types/Card';
+import Tes from '../../components/Tes';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -34,7 +35,6 @@ export default function Home() {
     <>
       <SafeAreaView>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
-
         <Styled.Header>
           <Styled.HeaderInfo>
             <View>
@@ -57,7 +57,6 @@ export default function Home() {
           </Styled.ContentInfo>
           <FabButton />
         </Styled.Header>
-
         <Styled.ContentCards>
           <FlatList
             data={data}
