@@ -13,7 +13,7 @@ export default function ListItem({ data }: PropsListItem) {
     return <CardPass data={item} secureTextEntry />;
   }
   return (
-    <View style={{ backgroundColor: 'red' }}>
+    <View>
       <FlatList
         data={data}
         horizontal={false}
