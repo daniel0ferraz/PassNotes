@@ -24,7 +24,7 @@ export const InputInfoName = styled(TextInput)`
     width: 100%;
     font-family: ${theme.fonts.Lexend700};
     font-size: 20px;
-    color: ${theme.colors.blue200};
+    color: ${theme.colors.white};
   `}
 `;
 
