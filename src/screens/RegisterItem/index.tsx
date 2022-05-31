@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
@@ -43,7 +43,6 @@ export default function RegisterItem() {
         data.logo === ''
       ) {
         setError(true);
-
         return;
       } else {
         const response = await getItem();
@@ -60,14 +59,14 @@ export default function RegisterItem() {
     }
   }
 
-  async function handleRemove(id: string) {
-    const response = await getItem();
-    const previousData = response ? JSON.parse(response) : [];
+  // async function handleRemove(id: string) {
+  //   const response = await getItem();
+  //   const previousData = response ? JSON.parse(response) : [];
 
-    const newData = previousData.filter(item => item.id !== id);
-    await setItem(JSON.stringify(newData));
-    setData(data);
-  }
+  //   const newData = previousData.filter(item => item.id !== id);
+  //   await setItem(JSON.stringify(newData));
+  //   setData(data);
+  // }
 
   function handleClear() {
     setData({
@@ -79,6 +78,22 @@ export default function RegisterItem() {
     } as PropsCard);
   }
 
+  useEffect(() => {
+    if (sucess) {
+      setSucess(true);
+      handleClear();
+      navigation.navigate('Home');
+    } else if (error) {
+      // Alert.alert('Erro', 'Preencha todos os campos!');
+      setError(true);
+    } else {
+      setError(false);
+      setSucess(false);
+    }
+  }, [sucess, error]);
+
+  console.log('sucess', sucess);
+  console.log('error', error);
   return (
     <>
       <SafeAreaView>
@@ -144,19 +159,10 @@ export default function RegisterItem() {
             </Styled.InputFieldContainer>
 
             <Styled.ButtonContainer>
-              <Button
-                size="Medium"
-                onPress={() => {
-                  handleSubmit();
-                }}>
+              <Button size="Medium" onPress={() => handleSubmit()}>
                 Salvar
               </Button>
-              <Button
-                size="Medium"
-                onPress={() => {
-                  handleRemove(id);
-                  handleClear();
-                }}>
+              <Button size="Medium" onPress={() => handleClear()}>
                 Excluir
               </Button>
             </Styled.ButtonContainer>

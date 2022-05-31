@@ -1,14 +1,13 @@
 import React, { useCallback, useState } from 'react';
-import { View, SafeAreaView, StatusBar, FlatList } from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import Singof from '../../assets/icon-singof.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
-import * as Styled from './styles';
-import CardPass from '../../components/CardPass';
+import ListItem from './../../components/ListItem';
 import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import { PropsCard } from '../../@types/Card';
+import * as Styled from './styles';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -54,16 +53,14 @@ export default function Home() {
           <Styled.ContentInfo>
             <InfoRegisters count={data} />
           </Styled.ContentInfo>
-          <FabButton />
         </Styled.Header>
         <Styled.ContentCards>
-          <FlatList
-            data={data}
-            horizontal={false}
-            keyExtractor={(item: PropsCard) => String(item.id)}
-            renderItem={({ item }) => <CardPass data={item} secureTextEntry />}
-          />
+          <ListItem data={data} />
         </Styled.ContentCards>
+
+        <View style={{}}>
+          <FabButton />
+        </View>
       </SafeAreaView>
     </>
   );
