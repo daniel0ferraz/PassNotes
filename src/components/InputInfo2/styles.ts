@@ -23,7 +23,7 @@ export const InputInfoName = styled(TextInput)`
     font-family: ${theme.fonts.Lexend700};
     font-size: 14px;
     line-height: 15px;
-    color: ${theme.colors.blue200};
+    color: ${theme.colors.white};
   `}
 `;
 
