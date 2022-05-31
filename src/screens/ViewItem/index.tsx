@@ -120,7 +120,6 @@ export default function ViewItem() {
             <InputInfo2
               placeholder="Digite a url do site"
               autoCapitalize="none"
-              editable={false}
               keyboardType="web-search"
               value={itens?.url}
               onChangeText={text => setData({ ...data, url: text })}
@@ -134,6 +133,7 @@ export default function ViewItem() {
               keyboardType="email-address"
               value={itens?.login}
               onChangeText={text => setData({ ...data, login: text })}
+              iconCopyPast={true}
             />
           </Styled.InputFieldContainer>
 
@@ -141,9 +141,11 @@ export default function ViewItem() {
             <InputField
               placeholder="Digite a senha"
               autoCapitalize="none"
-              // secureTextEntry
+              secureTextEntry
               value={itens?.password}
               onChangeText={text => setData({ ...data, password: text })}
+              iconCopyPast={true}
+              iconSec={true}
             />
           </Styled.InputFieldContainer>
 
