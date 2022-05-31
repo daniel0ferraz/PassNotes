@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { View, SafeAreaView, StatusBar } from 'react-native';
 import Singof from '../../assets/icon-singof.svg';
+import IconUser from '../../assets/Vector.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
 import ListItem from './../../components/ListItem';
@@ -37,7 +38,9 @@ export default function Home() {
           <Styled.HeaderInfo>
             <View>
               <Styled.BoxUser>
-                <Styled.IconUser />
+                <Styled.IconUser>
+                  <IconUser width={19} height={19} />
+                </Styled.IconUser>
                 <Styled.Info>Olá,</Styled.Info>
                 <Styled.InfoName>Daniel</Styled.InfoName>
               </Styled.BoxUser>
@@ -54,13 +57,12 @@ export default function Home() {
             <InfoRegisters count={data} />
           </Styled.ContentInfo>
         </Styled.Header>
+        {/* <View style={{}}>
+          <FabButton />
+        </View> */}
         <Styled.ContentCards>
           <ListItem data={data} />
         </Styled.ContentCards>
-
-        <View style={{}}>
-          <FabButton />
-        </View>
       </SafeAreaView>
     </>
   );

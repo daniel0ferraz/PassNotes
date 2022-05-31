@@ -20,7 +20,9 @@ export const BoxUser = styled.View`
   align-items: center;
 `;
 
-export const IconUser = styled.Image`
+export const IconUser = styled.View`
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
   border-radius: 4px;
