@@ -11,6 +11,7 @@ import Instagram from '../../assets/instagram.svg';
 import Slack from '../../assets/slack.svg';
 import Outlook from '../../assets/outlook.svg';
 import RocketChat from '../../assets/rocketchat.svg';
+import IconWord from '../../assets/icon-worldblue.svg';
 
 const cardLogo = {
   Facebook: {
@@ -45,6 +46,9 @@ const cardLogo = {
   },
   RocketChat: {
     icon: <RocketChat width={18} height={18} />,
+  },
+  '': {
+    icon: <IconWord width={18} height={18} />,
   },
 };
 

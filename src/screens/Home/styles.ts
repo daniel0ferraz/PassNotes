@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 export const Header = styled.View`
@@ -58,4 +59,5 @@ export const ContentInfo = styled.View`
 export const ContentCards = styled.View`
   padding: 40px 24px;
   margin-top: 60px;
+  height: ${Dimensions.get('screen').height - 136 - 60 - 24};
 `;

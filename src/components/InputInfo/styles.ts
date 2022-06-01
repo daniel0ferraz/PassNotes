@@ -30,6 +30,6 @@ export const InputInfoName = styled(TextInput)`
 
 export const BoxIcon2 = styled.TouchableOpacity`
   position: absolute;
-  right: 20;
+  right: 20px;
   top: 12px;
 `;

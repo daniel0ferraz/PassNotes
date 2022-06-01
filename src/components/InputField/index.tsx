@@ -23,7 +23,6 @@ export default function InputField({
     <>
       <View>
         <Styled.InputField
-          underlineColorAndroid="trasparent"
           secureTextEntry={sec}
           placeholderTextColor={'#ffffff'}
           iconCopyPast={iconCopyPast}

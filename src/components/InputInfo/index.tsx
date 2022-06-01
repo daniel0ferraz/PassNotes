@@ -17,7 +17,7 @@ import RocketChat from '../../assets/rocketchat.svg';
 import * as Styled from './styles';
 
 export type InputProps = TextInputProps & {
-  icon: string;
+  icon?: string | any;
 };
 
 export default function InputInfo({ icon, ...rest }: InputProps) {

@@ -57,11 +57,10 @@ export default function Home() {
             <InfoRegisters count={data} />
           </Styled.ContentInfo>
         </Styled.Header>
-        {/* <View style={{}}>
-          <FabButton />
-        </View> */}
+
         <Styled.ContentCards>
           <ListItem data={data} />
+          <FabButton />
         </Styled.ContentCards>
       </SafeAreaView>
     </>

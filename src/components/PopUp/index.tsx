@@ -11,6 +11,7 @@ type PropsPopUp = {
 };
 
 export default function PopUp({ title, alert }: PropsPopUp) {
+  const [visible, setVisible] = useState(false);
   const [close, setClose] = useState(true);
 
   const Iconsbrand = alert => {
@@ -36,7 +37,10 @@ export default function PopUp({ title, alert }: PropsPopUp) {
               <Styled.Message>{title}</Styled.Message>
               <Button
                 size="Small"
-                onPress={() => setClose(!close)}
+                onPress={() => {
+                  setClose(!close);
+                  setVisible(!visible);
+                }}
                 color="Blue">
                 Ok
               </Button>

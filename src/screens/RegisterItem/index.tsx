@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, SafeAreaView, StatusBar } from 'react-native';
+import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
@@ -51,11 +51,13 @@ export default function RegisterItem() {
         const newData = [...previousData, data];
         await setItem(JSON.stringify(newData));
 
-        setSucess(true);
+        setSucess(!sucess);
         handleClear();
       }
     } catch (error) {
       console.log(error);
+
+      setError(!error);
     }
   }
 
@@ -78,22 +80,6 @@ export default function RegisterItem() {
     } as PropsCard);
   }
 
-  useEffect(() => {
-    if (sucess) {
-      setSucess(true);
-      handleClear();
-      navigation.navigate('Home');
-    } else if (error) {
-      // Alert.alert('Erro', 'Preencha todos os campos!');
-      setError(true);
-    } else {
-      setError(false);
-      setSucess(false);
-    }
-  }, [sucess, error]);
-
-  console.log('sucess', sucess);
-  console.log('error', error);
   return (
     <>
       <SafeAreaView>

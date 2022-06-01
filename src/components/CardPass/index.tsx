@@ -16,6 +16,7 @@ import Instagram from '../../assets/instagram.svg';
 import Slack from '../../assets/slack.svg';
 import Outlook from '../../assets/outlook.svg';
 import RocketChat from '../../assets/rocketchat.svg';
+import IconWord from '../../assets/icon-worldblue.svg';
 import { PropsCard } from '../../@types/Card';
 import { useNavigation } from '@react-navigation/native';
 
@@ -75,7 +76,7 @@ export default function CardPass({
         return <RocketChat width={18} height={18} />;
       }
       default:
-        '';
+        return <IconWord width={18} height={18} />;
     }
   };
 
@@ -85,7 +86,6 @@ export default function CardPass({
         <Styled.Icon>{Iconsbrand()}</Styled.Icon>
         <View>
           <Styled.InputText
-            underlineColorAndroid="trasparent"
             secureTextEntry={sec}
             value={data?.password}
             editable={false}

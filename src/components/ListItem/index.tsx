@@ -3,6 +3,7 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import { PropsCard } from '../../@types/Card';
 import CardPass from '../CardPass';
+import FabButton from '../FabButton';
 
 type PropsListItem = {
   data: PropsCard[];
@@ -17,6 +18,7 @@ export default function ListItem({ data }: PropsListItem) {
       <FlatList
         data={data}
         horizontal={false}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item: PropsCard) => String(item.id)}
         renderItem={({ item }) => renderCard(item)}
       />
