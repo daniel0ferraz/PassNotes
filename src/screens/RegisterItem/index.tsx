@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, ScrollView, Alert } from 'react-native';
+import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
@@ -13,14 +13,10 @@ import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { PropsCard } from '../../@types/Card';
 
 import * as Styled from './styles';
+import PopUp from '../../components/PopUp';
 
 export default function RegisterItem() {
   const navigation = useNavigation();
-  const route = useRoute();
-
-  const itens = route.params as PropsCard;
-
-  console.log('itens:', itens);
 
   const id = uuid.v4();
   const [icon, setIcon] = useState({ icon: false });
@@ -32,131 +28,142 @@ export default function RegisterItem() {
     password: '',
   } as PropsCard);
 
+  const [error, setError] = useState(false);
+  const [sucess, setSucess] = useState(false);
+
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
   async function handleSubmit() {
-    // if (data.site === '' || data.password === '') {
-    //   return;
-    // } else {
-    //   console.log(data);
-    // }
-    const response = await getItem();
-    const previousData = response ? JSON.parse(response) : [];
+    try {
+      if (
+        data.id === '' ||
+        data.url === '' ||
+        data.password === '' ||
+        data.login === '' ||
+        data.logo === ''
+      ) {
+        setError(true);
+        return;
+      } else {
+        const response = await getItem();
+        const previousData = response ? JSON.parse(response) : [];
 
-    const newData = [...previousData, data];
-    await setItem(JSON.stringify(newData));
-    Alert.alert('Cadastro realizado com sucesso!');
+        const newData = [...previousData, data];
+        await setItem(JSON.stringify(newData));
+
+        setSucess(!sucess);
+        handleClear();
+      }
+    } catch (error) {
+      console.log(error);
+
+      setError(!error);
+    }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
-  async function handleRemove(id: string) {
-    const response = await getItem();
-    const previousData = response ? JSON.parse(response) : [];
+  // async function handleRemove(id: string) {
+  //   const response = await getItem();
+  //   const previousData = response ? JSON.parse(response) : [];
 
-    handleClear();
-    const newData = previousData.filter((itens: PropsCard) => itens.id !== id);
-    await setItem(JSON.stringify(newData));
-    setData(data);
-  }
+  //   const newData = previousData.filter(item => item.id !== id);
+  //   await setItem(JSON.stringify(newData));
+  //   setData(data);
+  // }
 
   function handleClear() {
     setData({
+      id: '',
       logo: '',
       url: '',
       login: '',
       password: '',
     } as PropsCard);
   }
+
   return (
     <>
       <SafeAreaView>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{
-            paddingBottom: 420,
-            flexGrow: 1,
-          }}>
-          <Styled.Header>
-            <Styled.HeaderInfo>
-              <View>
-                <Styled.BoxUser>
-                  <Styled.IconUser />
-                  <Styled.Info>Olá,</Styled.Info>
-                  <Styled.InfoName>Daniel</Styled.InfoName>
-                </Styled.BoxUser>
-              </View>
 
-              <View>
-                <Styled.SingOut onPress={() => navigation.goBack()}>
-                  <IconArrowLeft width={15} height={15} />
-                </Styled.SingOut>
-              </View>
-            </Styled.HeaderInfo>
+        <Styled.Header>
+          <Styled.HeaderInfo>
+            <View>
+              <Styled.BoxUser>
+                <Styled.IconUser />
+                <Styled.Info>Olá,</Styled.Info>
+                <Styled.InfoName>Daniel</Styled.InfoName>
+              </Styled.BoxUser>
+            </View>
 
-            <Styled.ContentForm>
-              <Styled.InputFieldContainer>
-                <InputInfo
-                  placeholder="Digite o nome do site"
-                  value={data.logo || itens.logo}
-                  onChangeText={(text: string) => {
-                    setData({ ...data, logo: text });
-                    setIcon(getLogo(text || itens.logo));
-                  }}
-                  icon={icon?.icon || itens?.logo}
-                />
-              </Styled.InputFieldContainer>
+            <View>
+              <Styled.SingOut onPress={() => navigation.goBack()}>
+                <IconArrowLeft width={15} height={15} />
+              </Styled.SingOut>
+            </View>
+          </Styled.HeaderInfo>
 
-              <Styled.InputFieldContainer>
-                <InputInfo2
-                  placeholder="Digite a url do site"
-                  autoCapitalize="none"
-                  keyboardType="web-search"
-                  value={data.url || itens.url}
-                  // onChangeText={text => setData({ ...data, url: text })}
-                />
-              </Styled.InputFieldContainer>
+          <Styled.ContentForm>
+            <Styled.InputFieldContainer>
+              <InputInfo
+                placeholder="Digite o nome do site"
+                value={data.logo}
+                onChangeText={(text: string) => {
+                  setData({ ...data, logo: text });
+                  setIcon(getLogo(text));
+                }}
+                icon={icon?.icon}
+              />
+            </Styled.InputFieldContainer>
 
-              <Styled.InputFieldContainer>
-                <InputField
-                  placeholder="Digite seu login de acesso "
-                  autoCapitalize="none"
-                  keyboardType="email-address"
-                  value={data.login || itens.login}
-                  onChangeText={text => setData({ ...data, login: text })}
-                />
-              </Styled.InputFieldContainer>
+            <Styled.InputFieldContainer>
+              <InputInfo2
+                placeholder="Digite a url do site"
+                autoCapitalize="none"
+                keyboardType="web-search"
+                value={data.url}
+                onChangeText={text => setData({ ...data, url: text })}
+              />
+            </Styled.InputFieldContainer>
 
-              <Styled.InputFieldContainer>
-                <InputField
-                  placeholder="Digite a senha"
-                  autoCapitalize="none"
-                  value={data.password || itens.password}
-                  onChangeText={text => setData({ ...data, password: text })}
-                />
-              </Styled.InputFieldContainer>
+            <Styled.InputFieldContainer>
+              <InputField
+                placeholder="Digite seu login de acesso "
+                autoCapitalize="none"
+                keyboardType="email-address"
+                value={data.login}
+                onChangeText={text => setData({ ...data, login: text })}
+              />
+            </Styled.InputFieldContainer>
 
-              <Styled.ButtonContainer>
-                <Button
-                  size="Medium"
-                  onPress={() => {
-                    handleSubmit(data);
-                  }}>
-                  Salvar
-                </Button>
-                <Button
-                  size="Medium"
-                  onPress={() => {
-                    // handleClear();
-                    handleRemove(itens.id);
-                  }}>
-                  Excluir
-                </Button>
-              </Styled.ButtonContainer>
-            </Styled.ContentForm>
-          </Styled.Header>
-        </ScrollView>
+            <Styled.InputFieldContainer>
+              <InputField
+                placeholder="Digite a senha"
+                autoCapitalize="none"
+                value={data.password}
+                onChangeText={text => setData({ ...data, password: text })}
+              />
+            </Styled.InputFieldContainer>
+
+            <Styled.ButtonContainer>
+              <Button size="Medium" onPress={() => handleSubmit()}>
+                Salvar
+              </Button>
+              <Button size="Medium" onPress={() => handleClear()}>
+                Excluir
+              </Button>
+            </Styled.ButtonContainer>
+          </Styled.ContentForm>
+          {sucess && (
+            <Styled.Alert>
+              <PopUp title="Senha registrada com sucesso!" alert="success" />
+            </Styled.Alert>
+          )}
+          {error && (
+            <Styled.Alert>
+              <PopUp title="Você deve preencher todos os dados" alert="alert" />
+            </Styled.Alert>
+          )}
+        </Styled.Header>
       </SafeAreaView>
     </>
   );

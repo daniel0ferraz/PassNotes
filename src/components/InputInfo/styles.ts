@@ -24,12 +24,12 @@ export const InputInfoName = styled(TextInput)`
     width: 100%;
     font-family: ${theme.fonts.Lexend700};
     font-size: 20px;
-    color: ${theme.colors.blue200};
+    color: ${theme.colors.white};
   `}
 `;
 
 export const BoxIcon2 = styled.TouchableOpacity`
   position: absolute;
-  right: 20;
+  right: 20px;
   top: 12px;
 `;

@@ -48,7 +48,12 @@ export const InfoName = styled.Text`
   `}
 `;
 
-export const SingOut = styled.TouchableOpacity``;
+export const SingOut = styled.TouchableOpacity`
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const ContentInfo = styled.View`
   margin-top: 24px;
@@ -67,4 +72,9 @@ export const ButtonContainer = styled.View`
   margin-top: 24px;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const Alert = styled.View`
+  flex: 1;
+  position: absolute;
 `;

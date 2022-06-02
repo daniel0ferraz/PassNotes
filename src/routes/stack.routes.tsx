@@ -9,6 +9,7 @@ import ForgotPassword from '../screens/ForgotPassword';
 import RegisterMail from './../screens/RegisterMail';
 import Home from '../screens/Home';
 import RegisterItem from '../screens/RegisterItem';
+import ViewItem from '../screens/ViewItem';
 
 export function StackRoutes() {
   return (
@@ -23,6 +24,7 @@ export function StackRoutes() {
         <Screen name="RegisterMail" component={RegisterMail} />
         <Screen name="Home" component={Home} />
         <Screen name="RegisterItem" component={RegisterItem} />
+        <Screen name="ViewItem" component={ViewItem} />
       </Navigator>
     </>
   );

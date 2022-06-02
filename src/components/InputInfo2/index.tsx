@@ -16,7 +16,7 @@ export default function InputInfo2(props: TextInputProps, { icon }: Props) {
         <Styled.BoxIcon>
           {icon ? icon : <IconWord width={18} height={18} />}
         </Styled.BoxIcon>
-        <Styled.InputInfoName placeholderTextColor={'#A5D8FF'} {...props} />
+        <Styled.InputInfoName placeholderTextColor={'#ffffff'} {...props} />
         <Styled.BoxIcon2>
           <IconEdit width={20} height={20} />
         </Styled.BoxIcon2>

@@ -7,6 +7,11 @@ import IconGithub from '../../assets/github.svg';
 import IconTwiter from '../../assets/twitter.svg';
 import IconTwitch from '../../assets/twitch.svg';
 import IconNotion from '../../assets/notion.svg';
+import Instagram from '../../assets/instagram.svg';
+import Slack from '../../assets/slack.svg';
+import Outlook from '../../assets/outlook.svg';
+import RocketChat from '../../assets/rocketchat.svg';
+import IconWord from '../../assets/icon-worldblue.svg';
 
 const cardLogo = {
   Facebook: {
@@ -21,7 +26,7 @@ const cardLogo = {
   Github: {
     icon: <IconGithub width={18} height={18} />,
   },
-  Twiter: {
+  Twitter: {
     icon: <IconTwiter width={18} height={18} />,
   },
   Twitch: {
@@ -29,6 +34,21 @@ const cardLogo = {
   },
   Notion: {
     icon: <IconNotion width={18} height={18} />,
+  },
+  Instagram: {
+    icon: <Instagram width={18} height={18} />,
+  },
+  Slack: {
+    icon: <Slack width={18} height={18} />,
+  },
+  Outlook: {
+    icon: <Outlook width={18} height={18} />,
+  },
+  RocketChat: {
+    icon: <RocketChat width={18} height={18} />,
+  },
+  '': {
+    icon: <IconWord width={18} height={18} />,
   },
 };
 

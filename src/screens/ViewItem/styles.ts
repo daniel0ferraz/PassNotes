@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components/native';
 
 export const Header = styled.View`
   ${({ theme }) => css`
-    background-color: ${theme.colors.blue800};
+    background-color: ${theme.colors.blue700};
     width: 100%;
-    height: 136px;
+    height: ${Dimensions.get('window').height};
     padding: 40px 24px;
   `}
 `;
@@ -21,9 +21,7 @@ export const BoxUser = styled.View`
   align-items: center;
 `;
 
-export const IconUser = styled.View`
-  align-items: center;
-  justify-content: center;
+export const IconUser = styled.Image`
   width: 32px;
   height: 32px;
   border-radius: 4px;
@@ -56,8 +54,22 @@ export const ContentInfo = styled.View`
   margin-top: 24px;
 `;
 
-export const ContentCards = styled.View`
-  padding: 40px 24px;
+export const ContentForm = styled.View`
   margin-top: 60px;
-  height: ${Dimensions.get('screen').height - 136 - 60 - 24};
+`;
+
+export const InputFieldContainer = styled.View`
+  margin-bottom: 24px;
+`;
+
+export const ButtonContainer = styled.View`
+  flex-direction: row;
+  margin-top: 24px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Alert = styled.View`
+  flex: 1;
+  position: absolute;
 `;

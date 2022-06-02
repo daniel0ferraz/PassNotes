@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { View, SafeAreaView, StatusBar, FlatList } from 'react-native';
+import { View, SafeAreaView, StatusBar } from 'react-native';
 import Singof from '../../assets/icon-singof.svg';
+import IconUser from '../../assets/Vector.svg';
 import InfoRegisters from './../../components/InfoRegisters/index';
 import { useNavigation } from '@react-navigation/native';
-import * as Styled from './styles';
-import CardPass from '../../components/CardPass';
+import ListItem from './../../components/ListItem';
 import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import { PropsCard } from '../../@types/Card';
+import * as Styled from './styles';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -34,12 +34,13 @@ export default function Home() {
     <>
       <SafeAreaView>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
-
         <Styled.Header>
           <Styled.HeaderInfo>
             <View>
               <Styled.BoxUser>
-                <Styled.IconUser />
+                <Styled.IconUser>
+                  <IconUser width={19} height={19} />
+                </Styled.IconUser>
                 <Styled.Info>Olá,</Styled.Info>
                 <Styled.InfoName>Daniel</Styled.InfoName>
               </Styled.BoxUser>
@@ -55,16 +56,11 @@ export default function Home() {
           <Styled.ContentInfo>
             <InfoRegisters count={data} />
           </Styled.ContentInfo>
-          <FabButton />
         </Styled.Header>
 
         <Styled.ContentCards>
-          <FlatList
-            data={data}
-            horizontal={false}
-            keyExtractor={(item: PropsCard) => String(item.id)}
-            renderItem={({ item }) => <CardPass data={item} secureTextEntry />}
-          />
+          <ListItem data={data} />
+          <FabButton />
         </Styled.ContentCards>
       </SafeAreaView>
     </>

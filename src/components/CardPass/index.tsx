@@ -12,6 +12,11 @@ import IconGithub from '../../assets/github.svg';
 import IconTwiter from '../../assets/twitter.svg';
 import IconTwitch from '../../assets/twitch.svg';
 import IconNotion from '../../assets/notion.svg';
+import Instagram from '../../assets/instagram.svg';
+import Slack from '../../assets/slack.svg';
+import Outlook from '../../assets/outlook.svg';
+import RocketChat from '../../assets/rocketchat.svg';
+import IconWord from '../../assets/icon-worldblue.svg';
 import { PropsCard } from '../../@types/Card';
 import { useNavigation } from '@react-navigation/native';
 
@@ -58,19 +63,29 @@ export default function CardPass({
       case 'Notion': {
         return <IconNotion width={18} height={18} />;
       }
-
+      case 'Instagram': {
+        return <Instagram width={18} height={18} />;
+      }
+      case 'Slack': {
+        return <Slack width={18} height={18} />;
+      }
+      case 'Outlook': {
+        return <Outlook width={18} height={18} />;
+      }
+      case 'RocketChat': {
+        return <RocketChat width={18} height={18} />;
+      }
       default:
-        '';
+        return <IconWord width={18} height={18} />;
     }
   };
 
   return (
     <>
-      <Styled.Card onPress={() => navigation.navigate('RegisterItem', data)}>
+      <Styled.Card onPress={() => navigation.navigate('ViewItem', data)}>
         <Styled.Icon>{Iconsbrand()}</Styled.Icon>
         <View>
           <Styled.InputText
-            underlineColorAndroid="trasparent"
             secureTextEntry={sec}
             value={data?.password}
             editable={false}
