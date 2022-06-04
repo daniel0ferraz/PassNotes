@@ -19,9 +19,8 @@ export default function Home() {
   async function handleFetchData() {
     const response = await getItem();
 
-    const data = response ? JSON.parse(response) : [];
+    data = response ? JSON.parse(response) : [];
     setData(data);
-    console.log(data.length);
   }
 
   useFocusEffect(
@@ -39,10 +38,10 @@ export default function Home() {
             <View>
               <Styled.BoxUser>
                 <Styled.IconUser>
-                  <IconUser width={19} height={19} />
+                  {/* <IconUser width={19} height={19} /> */}
                 </Styled.IconUser>
                 <Styled.Info>Olá,</Styled.Info>
-                <Styled.InfoName>Daniel</Styled.InfoName>
+                <Styled.InfoName />
               </Styled.BoxUser>
             </View>
 
