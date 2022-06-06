@@ -108,7 +108,8 @@ export default function LoginMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={handleSubmit(handleUserRegister)}
+                onPress={() => navigation.navigate('Home')}
+                // onPress={handleSubmit(handleUserRegister)}
               />
             </Styled.SingInContainer>
             <Styled.LinkRegister>

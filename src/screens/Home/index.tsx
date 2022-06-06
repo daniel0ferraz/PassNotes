@@ -9,17 +9,24 @@ import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import * as Styled from './styles';
+import ButtonGroup from '../../components/ButtonGroup';
+import Button from '../../components/Button';
 
 export default function Home() {
   const navigation = useNavigation();
 
   const [data, setData] = useState([]);
+
+  const [dataSimulator, setDataSimulator] = useState({
+    typePayment: '',
+    typeClient: '',
+  });
   const { getItem } = useAsyncStorage('@passnotes:passwords');
 
   async function handleFetchData() {
     const response = await getItem();
 
-    data = response ? JSON.parse(response) : [];
+    const data = response ? JSON.parse(response) : [];
     setData(data);
   }
 
@@ -59,7 +66,27 @@ export default function Home() {
 
         <Styled.ContentCards>
           <ListItem data={data} />
-          <FabButton />
+          <View
+            style={{
+              justifyContent: 'center',
+
+              alignItems: 'center',
+            }}>
+            <ButtonGroup
+              onChangeText={(item: any) =>
+                setDataSimulator({ ...dataSimulator, typeClient: item })
+              }
+              nameButtons={['Cliente', 'Logista']}
+            />
+            <ButtonGroup
+              onChangeText={(item: any) =>
+                setDataSimulator({ ...dataSimulator, typePayment: item })
+              }
+              nameButtons={['Crédito', 'Débito']}
+            />
+          </View>
+
+          {/* <FabButton /> */}
         </Styled.ContentCards>
       </SafeAreaView>
     </>
