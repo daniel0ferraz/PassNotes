@@ -66,27 +66,7 @@ export default function Home() {
 
         <Styled.ContentCards>
           <ListItem data={data} />
-          <View
-            style={{
-              justifyContent: 'center',
-
-              alignItems: 'center',
-            }}>
-            <ButtonGroup
-              onChangeText={(item: any) =>
-                setDataSimulator({ ...dataSimulator, typeClient: item })
-              }
-              nameButtons={['Cliente', 'Logista']}
-            />
-            <ButtonGroup
-              onChangeText={(item: any) =>
-                setDataSimulator({ ...dataSimulator, typePayment: item })
-              }
-              nameButtons={['Crédito', 'Débito']}
-            />
-          </View>
-
-          {/* <FabButton /> */}
+          <FabButton />
         </Styled.ContentCards>
       </SafeAreaView>
     </>

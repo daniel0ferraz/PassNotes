@@ -9,25 +9,11 @@ import ButtonIcon from '../../components/ButtonIcon';
 import ControlledInput from '../../components/ControlledInput';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
+
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FormData } from '../../@types/Form';
+import { ValidationForm } from '../../validations/FormData';
 import * as Styled from './styles';
-
-type FormData = {
-  email: string;
-  password: string;
-};
-
-const schema = yup.object({
-  email: yup
-    .string()
-    .email('Insira um e-mail válido')
-    .required('O e-mail é obrigatório'),
-  password: yup
-    .string()
-    .min(6, 'A senha deve ter no mínimo 6 caracteres')
-    .required('A senha é obrigatória'),
-});
 
 export default function LoginMail() {
   const navigation = useNavigation();
@@ -37,7 +23,7 @@ export default function LoginMail() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(ValidationForm),
   });
 
   function handleUserRegister(data: FormData) {
@@ -108,8 +94,7 @@ export default function LoginMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={() => navigation.navigate('Home')}
-                // onPress={handleSubmit(handleUserRegister)}
+                onPress={() => handleSubmit(handleUserRegister)}
               />
             </Styled.SingInContainer>
             <Styled.LinkRegister>
