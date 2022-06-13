@@ -9,10 +9,9 @@ import ButtonIcon from '../../components/ButtonIcon';
 import ControlledInput from '../../components/ControlledInput';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-
+import { ValidationForm } from '../../validations/FormData';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormData } from '../../@types/Form';
-import { ValidationForm } from '../../validations/FormData';
 import * as Styled from './styles';
 
 export default function LoginMail() {
@@ -76,13 +75,14 @@ export default function LoginMail() {
                 autoCapitalize="none"
                 error={errors.email}
               />
+
               <ControlledInput
                 name="password"
                 control={control}
-                icon={<IconLock width={16} height={21} />}
+                icon={<IconLock width={20} height={21} />}
                 placeholder="Digite sua senha"
-                keyboardType="visible-password"
-                secureTextEntry
+                keyboardType="email-address"
+                autoCapitalize="none"
                 error={errors.password}
               />
             </Styled.ContentInput>
@@ -94,7 +94,7 @@ export default function LoginMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={() => handleSubmit(handleUserRegister)}
+                onPress={handleSubmit(handleUserRegister)}
               />
             </Styled.SingInContainer>
             <Styled.LinkRegister>

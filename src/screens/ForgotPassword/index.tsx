@@ -9,10 +9,10 @@ import { StatusBar } from 'react-native';
 import { FormData } from '../../@types/Form';
 import { useForm } from 'react-hook-form';
 
-import { yupResolver } from '@hookform/resolvers/yup';
 import ControlledInput from '../../components/ControlledInput';
 import { ValidationForm } from '../../validations/FormData';
 import * as Styled from './styles';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export default function ForgotPassword() {
   const navigation = useNavigation();
