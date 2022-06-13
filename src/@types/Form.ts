@@ -1,6 +1,6 @@
 export type FormData = {
-  name: string;
-  email: string;
-  password: string;
-  password_confirm: string;
+  name?: string;
+  email?: string;
+  password?: string;
+  password_confirm?: string;
 };
