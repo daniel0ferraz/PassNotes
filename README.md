@@ -2,7 +2,7 @@
 
 # Pass Notes
 
-Aplicativo de gerenciamento de senhas em armazenamento local. Este aplicativo foi criado para fins de estudos
+Aplicativo de gerenciamento de senhas em armazenamento local. Este aplicativo foi criado para fins de estudos.
 
 ## Stack
 
