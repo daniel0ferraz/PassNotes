@@ -1,6 +1,6 @@
 ![App Screenshot](.github/cover.png)
 
-# Pass Notes
+# PassNotes
 
 Aplicativo de gerenciamento de senhas em armazenamento local. Este aplicativo foi criado para fins de estudos.
 
