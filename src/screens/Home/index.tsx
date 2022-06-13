@@ -9,11 +9,18 @@ import FabButton from '../../components/FabButton';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import * as Styled from './styles';
+import ButtonGroup from '../../components/ButtonGroup';
+import Button from '../../components/Button';
 
 export default function Home() {
   const navigation = useNavigation();
 
   const [data, setData] = useState([]);
+
+  const [dataSimulator, setDataSimulator] = useState({
+    typePayment: '',
+    typeClient: '',
+  });
   const { getItem } = useAsyncStorage('@passnotes:passwords');
 
   async function handleFetchData() {
@@ -21,7 +28,6 @@ export default function Home() {
 
     const data = response ? JSON.parse(response) : [];
     setData(data);
-    console.log(data.length);
   }
 
   useFocusEffect(
@@ -39,10 +45,10 @@ export default function Home() {
             <View>
               <Styled.BoxUser>
                 <Styled.IconUser>
-                  <IconUser width={19} height={19} />
+                  {/* <IconUser width={19} height={19} /> */}
                 </Styled.IconUser>
                 <Styled.Info>Olá,</Styled.Info>
-                <Styled.InfoName>Daniel</Styled.InfoName>
+                <Styled.InfoName />
               </Styled.BoxUser>
             </View>
 

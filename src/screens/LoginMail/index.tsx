@@ -6,12 +6,31 @@ import IlustrationLogin from '../../assets/ilustration-login.svg';
 import IconMail from '../../assets/icon-mail.svg';
 import IconLock from '../../assets/icon-lock.svg';
 import ButtonIcon from '../../components/ButtonIcon';
-import { Input } from '../../components/Input';
+import ControlledInput from '../../components/ControlledInput';
 import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { ValidationForm } from '../../validations/FormData';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormData } from '../../@types/Form';
 import * as Styled from './styles';
 
 export default function LoginMail() {
   const navigation = useNavigation();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(ValidationForm),
+  });
+
+  function handleUserRegister(data: FormData) {
+    if (data) {
+      navigation.navigate('Home');
+    }
+  }
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
@@ -47,17 +66,24 @@ export default function LoginMail() {
 
           <Styled.ContainerForm>
             <Styled.ContentInput>
-              <Input
+              <ControlledInput
+                name="email"
+                control={control}
                 icon={<IconMail width={20} height={21} />}
                 placeholder="Digite seu e-mail"
                 keyboardType="email-address"
                 autoCapitalize="none"
+                error={errors.email}
               />
-              <Input
-                icon={<IconLock width={16} height={21} />}
+
+              <ControlledInput
+                name="password"
+                control={control}
+                icon={<IconLock width={20} height={21} />}
                 placeholder="Digite sua senha"
-                keyboardType="visible-password"
-                secureTextEntry
+                keyboardType="email-address"
+                autoCapitalize="none"
+                error={errors.password}
               />
             </Styled.ContentInput>
 
@@ -68,7 +94,7 @@ export default function LoginMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={() => navigation.navigate('Home')}
+                onPress={handleSubmit(handleUserRegister)}
               />
             </Styled.SingInContainer>
             <Styled.LinkRegister>

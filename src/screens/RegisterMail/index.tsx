@@ -6,13 +6,33 @@ import IconMail from '../../assets/icon-mail.svg';
 import IconLock from '../../assets/icon-lock.svg';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
-import * as Styled from './styles';
-import { Input } from '../../components/Input';
+import ControlledInput from './../../components/ControlledInput';
+
 import ButtonIcon from '../../components/ButtonIcon';
 import { SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { useForm } from 'react-hook-form';
+import { ValidationForm } from '../../validations/FormData';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormData } from '../../@types/Form';
+import * as Styled from './styles';
 
 export default function RegisterMail() {
   const navigation = useNavigation();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(ValidationForm),
+  });
+
+  function handleUserRegister(data: FormData) {
+    if (data) {
+      navigation.navigate('Home');
+    }
+  }
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
@@ -42,25 +62,44 @@ export default function RegisterMail() {
           </Styled.ContainerContent>
 
           <Styled.ContainerForm>
-            <Input
+            <ControlledInput
+              name="name"
+              control={control}
               icon={<IconUser width={20} height={21} />}
               placeholder="Digite seu nome"
               keyboardType="email-address"
               autoCapitalize="none"
+              error={errors.name}
             />
 
-            <Input
+            <ControlledInput
+              name="email"
+              control={control}
               icon={<IconMail width={20} height={21} />}
               placeholder="Digite seu e-mail"
               keyboardType="email-address"
               autoCapitalize="none"
+              error={errors.email}
             />
 
-            <Input
+            <ControlledInput
+              name="password"
+              control={control}
               icon={<IconLock width={20} height={21} />}
               placeholder="Digite sua senha"
               keyboardType="email-address"
               autoCapitalize="none"
+              error={errors.password}
+            />
+
+            <ControlledInput
+              name="password_confirm"
+              control={control}
+              icon={<IconLock width={20} height={21} />}
+              placeholder="Confirme sua senha"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              error={errors.password_confirm}
             />
 
             <Styled.SingInContainer>
@@ -70,7 +109,7 @@ export default function RegisterMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={() => console.log('login')}
+                onPress={handleSubmit(handleUserRegister)}
               />
             </Styled.SingInContainer>
 
