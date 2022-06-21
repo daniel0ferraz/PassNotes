@@ -9,7 +9,7 @@ import ButtonIcon from '../../components/ButtonIcon';
 import ControlledInput from '../../components/ControlledInput';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import { ValidationForm } from '../../validations/FormData';
+import { ValidationForm } from '../../validations/LoginMail';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormData } from '../../@types/Form';
 import * as Styled from './styles';
