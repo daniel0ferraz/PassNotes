@@ -21,55 +21,56 @@ export type InputProps = TextInputProps & {
 };
 
 export default function InputInfo({ icon, ...rest }: InputProps) {
-  const Iconsbrand = () => {
-    switch (icon) {
-      case 'Facebook': {
-        return <IconFacebook width={18} height={18} />;
-      }
-      case 'Google': {
-        return <IconGoogle width={18} height={18} />;
-      }
+  // const Iconsbrand = () => {
+  //   switch (icon) {
+  //     case 'Facebook': {
+  //       return <IconFacebook width={18} height={18} />;
+  //     }
+  //     case 'Google': {
+  //       return <IconGoogle width={18} height={18} />;
+  //     }
 
-      case 'Figma': {
-        return <IconFigma width={18} height={18} />;
-      }
+  //     case 'Figma': {
+  //       return <IconFigma width={18} height={18} />;
+  //     }
 
-      case 'Github': {
-        return <IconGithub width={18} height={18} />;
-      }
+  //     case 'Github': {
+  //       return <IconGithub width={18} height={18} />;
+  //     }
 
-      case 'Twiter': {
-        return <IconTwiter width={18} height={18} />;
-      }
+  //     case 'Twiter': {
+  //       return <IconTwiter width={18} height={18} />;
+  //     }
 
-      case 'Twitch': {
-        return <IconTwitch width={18} height={18} />;
-      }
+  //     case 'Twitch': {
+  //       return <IconTwitch width={18} height={18} />;
+  //     }
 
-      case 'Notion': {
-        return <IconNotion width={18} height={18} />;
-      }
-      case 'Instagram': {
-        return <Instagram width={18} height={18} />;
-      }
-      case 'Slack': {
-        return <Slack width={18} height={18} />;
-      }
-      case 'Outlook': {
-        return <Outlook width={18} height={18} />;
-      }
-      case 'RocketChat': {
-        return <RocketChat width={18} height={18} />;
-      }
+  //     case 'Notion': {
+  //       return <IconNotion width={18} height={18} />;
+  //     }
+  //     case 'Instagram': {
+  //       return <Instagram width={18} height={18} />;
+  //     }
+  //     case 'Slack': {
+  //       return <Slack width={18} height={18} />;
+  //     }
+  //     case 'Outlook': {
+  //       return <Outlook width={18} height={18} />;
+  //     }
+  //     case 'RocketChat': {
+  //       return <RocketChat width={18} height={18} />;
+  //     }
 
-      default:
-        return <IconWord width={18} height={18} />;
-    }
-  };
+  //     default:
+  //       return <IconWord width={18} height={18} />;
+  //   }
+  // };
+
   return (
     <Styled.Container>
       <Styled.BoxIcon>
-        <Text>{icon && icon}</Text>
+        <Text>{icon ? icon : <IconWord width={18} height={18} />}</Text>
       </Styled.BoxIcon>
       <Styled.InputInfoName placeholderTextColor={'#FFFFFF'} {...rest} />
       <Styled.BoxIcon2>

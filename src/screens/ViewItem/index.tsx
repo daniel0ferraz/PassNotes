@@ -23,6 +23,7 @@ export default function ViewItem() {
 
   const id = uuid.v4();
   const [icon, setIcon] = useState({ icon: false });
+
   const [data, setData] = useState({
     id,
     logo: '',
@@ -56,6 +57,7 @@ export default function ViewItem() {
         setSucess(true);
       }
     } catch (error) {
+      setError(true);
       console.log(error);
     }
   }
@@ -91,7 +93,7 @@ export default function ViewItem() {
             <Styled.BoxUser>
               <Styled.IconUser />
               <Styled.Info>Olá,</Styled.Info>
-              <Styled.InfoName>Daniel</Styled.InfoName>
+              <Styled.InfoName />
             </Styled.BoxUser>
           </View>
 
@@ -110,9 +112,9 @@ export default function ViewItem() {
               value={itens?.logo}
               onChangeText={(text: string) => {
                 setData({ ...data, logo: text });
-                setIcon(getLogo(text || itens?.logo));
+                setIcon(getLogo(itens?.logo));
               }}
-              icon={itens?.logo}
+              icon={''}
             />
           </Styled.InputFieldContainer>
 

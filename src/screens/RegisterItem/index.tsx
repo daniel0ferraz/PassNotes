@@ -61,15 +61,6 @@ export default function RegisterItem() {
     }
   }
 
-  // async function handleRemove(id: string) {
-  //   const response = await getItem();
-  //   const previousData = response ? JSON.parse(response) : [];
-
-  //   const newData = previousData.filter(item => item.id !== id);
-  //   await setItem(JSON.stringify(newData));
-  //   setData(data);
-  // }
-
   function handleClear() {
     setData({
       id: '',
