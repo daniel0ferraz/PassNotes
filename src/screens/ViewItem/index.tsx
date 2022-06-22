@@ -69,6 +69,7 @@ export default function ViewItem() {
     const newData = previousData.filter(itens => itens.id !== id);
     await setItem(JSON.stringify(newData));
     setData(data);
+    navigation.goBack();
   }
 
   function handleClear() {
@@ -120,6 +121,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputInfo2
+              editable={false}
               placeholder="Digite a url do site"
               autoCapitalize="none"
               keyboardType="web-search"
@@ -130,6 +132,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputField
+              editable={false}
               placeholder="Digite seu login de acesso "
               autoCapitalize="none"
               keyboardType="email-address"
@@ -141,6 +144,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputField
+              editable={false}
               placeholder="Digite a senha"
               autoCapitalize="none"
               secureTextEntry
@@ -153,6 +157,7 @@ export default function ViewItem() {
 
           <Styled.ButtonContainer>
             <Button
+              disabled
               size="Medium"
               onPress={() => {
                 handleSubmit();

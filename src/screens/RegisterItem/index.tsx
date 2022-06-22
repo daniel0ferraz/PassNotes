@@ -53,10 +53,10 @@ export default function RegisterItem() {
 
         setSucess(!sucess);
         handleClear();
+        navigation.goBack();
       }
     } catch (error) {
       console.log(error);
-
       setError(!error);
     }
   }

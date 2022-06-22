@@ -70,7 +70,7 @@ export default function InputInfo({ icon, ...rest }: InputProps) {
   return (
     <Styled.Container>
       <Styled.BoxIcon>
-        <Text>{icon ? icon : <IconWord width={18} height={18} />}</Text>
+        <Text>{icon && icon}</Text>
       </Styled.BoxIcon>
       <Styled.InputInfoName placeholderTextColor={'#FFFFFF'} {...rest} />
       <Styled.BoxIcon2>
