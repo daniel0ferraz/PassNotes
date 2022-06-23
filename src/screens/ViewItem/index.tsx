@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
+import InputInfoLogo from './InputInfoLogo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
 import uuid from 'react-native-uuid';
@@ -85,6 +86,10 @@ export default function ViewItem() {
     itens.login = '';
     itens.password = '';
   }
+
+  useEffect(() => {
+    setIcon(getLogo(itens?.logo));
+  }, [itens.logo]);
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
@@ -107,7 +112,7 @@ export default function ViewItem() {
 
         <Styled.ContentForm>
           <Styled.InputFieldContainer>
-            <InputInfo
+            <InputInfoLogo
               placeholder="Digite o nome do site"
               editable={false}
               value={itens?.logo}
@@ -115,7 +120,7 @@ export default function ViewItem() {
                 setData({ ...data, logo: text });
                 setIcon(getLogo(itens?.logo));
               }}
-              icon={''}
+              icon={itens?.logo}
             />
           </Styled.InputFieldContainer>
 
