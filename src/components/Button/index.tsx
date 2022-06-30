@@ -1,9 +1,9 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 import * as Styled from './styles';
 
-export type PropsButton = {
+export type PropsButton = TouchableOpacityProps & {
   children: React.ReactNode;
-  onPress?: () => void;
   color?: 'Blue' | 'Blue600' | 'Blue100';
   size?: 'Small' | 'Medium';
   textColor?: 'White' | 'Bluetxt';
@@ -11,13 +11,13 @@ export type PropsButton = {
 
 export default function Button({
   children,
-  onPress,
   color = 'Blue',
   size = 'Medium',
   textColor = 'White',
+  ...rest
 }: PropsButton) {
   return (
-    <Styled.Button onPress={onPress} color={color} size={size}>
+    <Styled.Button color={color} size={size} {...rest}>
       <Styled.TextButton textColor={textColor}>{children}</Styled.TextButton>
     </Styled.Button>
   );

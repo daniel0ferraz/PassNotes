@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
+import InputInfoLogo from './InputInfoLogo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
 import uuid from 'react-native-uuid';
@@ -23,6 +24,7 @@ export default function ViewItem() {
 
   const id = uuid.v4();
   const [icon, setIcon] = useState({ icon: false });
+
   const [data, setData] = useState({
     id,
     logo: '',
@@ -56,6 +58,7 @@ export default function ViewItem() {
         setSucess(true);
       }
     } catch (error) {
+      setError(true);
       console.log(error);
     }
   }
@@ -67,6 +70,7 @@ export default function ViewItem() {
     const newData = previousData.filter(itens => itens.id !== id);
     await setItem(JSON.stringify(newData));
     setData(data);
+    navigation.goBack();
   }
 
   function handleClear() {
@@ -82,6 +86,10 @@ export default function ViewItem() {
     itens.login = '';
     itens.password = '';
   }
+
+  useEffect(() => {
+    setIcon(getLogo(itens?.logo));
+  }, [itens.logo]);
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
@@ -91,7 +99,7 @@ export default function ViewItem() {
             <Styled.BoxUser>
               <Styled.IconUser />
               <Styled.Info>Olá,</Styled.Info>
-              <Styled.InfoName>Daniel</Styled.InfoName>
+              <Styled.InfoName />
             </Styled.BoxUser>
           </View>
 
@@ -104,13 +112,13 @@ export default function ViewItem() {
 
         <Styled.ContentForm>
           <Styled.InputFieldContainer>
-            <InputInfo
+            <InputInfoLogo
               placeholder="Digite o nome do site"
               editable={false}
               value={itens?.logo}
               onChangeText={(text: string) => {
                 setData({ ...data, logo: text });
-                setIcon(getLogo(text || itens?.logo));
+                setIcon(getLogo(itens?.logo));
               }}
               icon={itens?.logo}
             />
@@ -118,6 +126,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputInfo2
+              editable={false}
               placeholder="Digite a url do site"
               autoCapitalize="none"
               keyboardType="web-search"
@@ -128,6 +137,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputField
+              editable={false}
               placeholder="Digite seu login de acesso "
               autoCapitalize="none"
               keyboardType="email-address"
@@ -139,6 +149,7 @@ export default function ViewItem() {
 
           <Styled.InputFieldContainer>
             <InputField
+              editable={false}
               placeholder="Digite a senha"
               autoCapitalize="none"
               secureTextEntry
@@ -151,6 +162,7 @@ export default function ViewItem() {
 
           <Styled.ButtonContainer>
             <Button
+              disabled
               size="Medium"
               onPress={() => {
                 handleSubmit();

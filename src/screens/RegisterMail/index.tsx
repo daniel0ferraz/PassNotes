@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import IlustrationLogin from '../../assets/ilustra2.svg';
 import IconUser from '../../assets/icon-user.svg';
@@ -9,27 +9,58 @@ import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import ControlledInput from './../../components/ControlledInput';
 
 import ButtonIcon from '../../components/ButtonIcon';
-import { SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { ValidationForm } from '../../validations/FormData';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormData } from '../../@types/Form';
+import uuid from 'react-native-uuid';
 import * as Styled from './styles';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { Input } from '../../components/Input';
 
 export default function RegisterMail() {
+  const id = uuid.v4();
   const navigation = useNavigation();
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: yupResolver(ValidationForm),
-  });
+  const [data, setData] = useState({
+    id,
+    name: '',
+    email: '',
+    password: '',
+    password_confirm: '',
+  } as FormData);
 
-  function handleUserRegister(data: FormData) {
-    if (data) {
-      navigation.navigate('Home');
+  // const {
+  //   control,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<FormData>({
+  //   resolver: yupResolver(ValidationForm),
+  // });
+  const { getItem, setItem } = useAsyncStorage('@passnotes:userRegister');
+
+  async function handleUserRegister() {
+    try {
+      if (
+        data.name === '' ||
+        data.email === '' ||
+        data.password === '' ||
+        data.password_confirm === ''
+      ) {
+        Alert.alert('Preencha todos os campos');
+        return;
+      } else {
+        const response = await getItem();
+        const previousData = response ? JSON.parse(response) : [];
+
+        const newData = [...previousData, data];
+        await setItem(JSON.stringify(newData));
+        Alert.alert('Cadastro realizado com sucesso!');
+        navigation.navigate('LoginMail');
+      }
+    } catch (error) {
+      Alert.alert('Erro ao cadastrar usuário');
     }
   }
 
@@ -62,44 +93,42 @@ export default function RegisterMail() {
           </Styled.ContainerContent>
 
           <Styled.ContainerForm>
-            <ControlledInput
-              name="name"
-              control={control}
+            <Input
+              value={data.name}
               icon={<IconUser width={20} height={21} />}
               placeholder="Digite seu nome"
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.name}
+              onChangeText={text => setData({ ...data, name: text })}
             />
 
-            <ControlledInput
-              name="email"
-              control={control}
+            <Input
+              value={data.email}
               icon={<IconMail width={20} height={21} />}
               placeholder="Digite seu e-mail"
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.email}
+              onChangeText={text => setData({ ...data, email: text })}
             />
 
-            <ControlledInput
-              name="password"
-              control={control}
+            <Input
+              value={data.password}
               icon={<IconLock width={20} height={21} />}
               placeholder="Digite sua senha"
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.password}
+              onChangeText={text => setData({ ...data, password: text })}
             />
 
-            <ControlledInput
-              name="password_confirm"
-              control={control}
+            <Input
+              value={data.password_confirm}
               icon={<IconLock width={20} height={21} />}
               placeholder="Confirme sua senha"
               keyboardType="email-address"
               autoCapitalize="none"
-              error={errors.password_confirm}
+              onChangeText={text =>
+                setData({ ...data, password_confirm: text })
+              }
             />
 
             <Styled.SingInContainer>
@@ -109,7 +138,7 @@ export default function RegisterMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={handleSubmit(handleUserRegister)}
+                onPress={() => handleUserRegister()}
               />
             </Styled.SingInContainer>
 

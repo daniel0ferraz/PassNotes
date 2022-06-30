@@ -1,3 +1,4 @@
+import { TouchableOpacity } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { PropsButton } from '.';
 
@@ -36,7 +37,7 @@ const modifierButton = {
   `,
 };
 
-export const Button = styled.TouchableOpacity<Props>`
+export const Button = styled(TouchableOpacity)<Props>`
   ${({ size, color }) => css`
     align-items: center;
     justify-content: center;
