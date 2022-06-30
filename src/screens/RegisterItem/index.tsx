@@ -8,17 +8,17 @@ import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
-import uuid from 'react-native-uuid';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import PopUp from '../../components/PopUp';
+import { messages } from '../../components/PopUp/Messages';
+import uuid from 'react-native-uuid';
 import { PropsCard } from '../../@types/Card';
 
 import * as Styled from './styles';
-import PopUp from '../../components/PopUp';
 
 export default function RegisterItem() {
-  const navigation = useNavigation();
-
   const id = uuid.v4();
+  const navigation = useNavigation();
   const [icon, setIcon] = useState({ icon: false });
   const [data, setData] = useState({
     id,
@@ -27,11 +27,19 @@ export default function RegisterItem() {
     login: '',
     password: '',
   } as PropsCard);
-
-  const [error, setError] = useState(false);
-  const [sucess, setSucess] = useState(false);
-
+  const [success, setSuccess] = useState(false);
+  const [alert, setAlert] = useState(false);
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
+
+  const handleClear = () => {
+    return setData({
+      id: '',
+      logo: '',
+      url: '',
+      login: '',
+      password: '',
+    } as PropsCard);
+  };
 
   async function handleSubmit() {
     try {
@@ -42,7 +50,7 @@ export default function RegisterItem() {
         data.login === '' ||
         data.logo === ''
       ) {
-        setError(true);
+        setAlert(true);
         return;
       } else {
         const response = await getItem();
@@ -51,26 +59,22 @@ export default function RegisterItem() {
         const newData = [...previousData, data];
         await setItem(JSON.stringify(newData));
 
-        setSucess(!sucess);
+        setSuccess(true);
         handleClear();
-        navigation.goBack();
       }
     } catch (error) {
       console.log(error);
-      setError(!error);
     }
   }
 
-  function handleClear() {
-    setData({
-      id: '',
-      logo: '',
-      url: '',
-      login: '',
-      password: '',
-    } as PropsCard);
-  }
+  useEffect(() => {
+    if (icon === false) {
+      setIcon({ icon: true });
+    }
+  }, [icon]);
 
+  console.log('Icon:', icon);
+  console.log('Data.Logo:', data.logo);
   return (
     <>
       <SafeAreaView>
@@ -82,7 +86,7 @@ export default function RegisterItem() {
               <Styled.BoxUser>
                 <Styled.IconUser />
                 <Styled.Info>Olá,</Styled.Info>
-                <Styled.InfoName>Daniel</Styled.InfoName>
+                <Styled.InfoName />
               </Styled.BoxUser>
             </View>
 
@@ -97,7 +101,7 @@ export default function RegisterItem() {
             <Styled.InputFieldContainer>
               <InputInfo
                 placeholder="Digite o nome do site"
-                value={data.logo}
+                value={data.logo.trim()}
                 onChangeText={(text: string) => {
                   setData({ ...data, logo: text });
                   setIcon(getLogo(text));
@@ -144,16 +148,26 @@ export default function RegisterItem() {
               </Button>
             </Styled.ButtonContainer>
           </Styled.ContentForm>
-          {sucess && (
-            <Styled.Alert>
-              <PopUp title="Senha registrada com sucesso!" alert="success" />
-            </Styled.Alert>
-          )}
-          {error && (
-            <Styled.Alert>
-              <PopUp title="Você deve preencher todos os dados" alert="alert" />
-            </Styled.Alert>
-          )}
+
+          <Styled.Alert>
+            {alert && (
+              <PopUp
+                showAlert={alert}
+                setShowAlert={setAlert}
+                title={messages[0].message}
+                alert={messages[0].type}
+              />
+            )}
+
+            {success && (
+              <PopUp
+                showAlert={success}
+                setShowAlert={setSuccess}
+                title={messages[1].message}
+                alert={messages[1].type}
+              />
+            )}
+          </Styled.Alert>
         </Styled.Header>
       </SafeAreaView>
     </>
