@@ -68,13 +68,11 @@ export default function RegisterItem() {
   }
 
   useEffect(() => {
-    if (icon === false) {
+    if (!icon) {
       setIcon({ icon: true });
     }
   }, [icon]);
 
-  console.log('Icon:', icon);
-  console.log('Data.Logo:', data.logo);
   return (
     <>
       <SafeAreaView>
