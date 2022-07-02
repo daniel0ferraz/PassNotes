@@ -1,5 +1,5 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Alert, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import IlustrationLogin from '../../assets/ilustration-login.svg';
@@ -12,10 +12,18 @@ import { useForm } from 'react-hook-form';
 import { ValidationForm } from '../../validations/LoginMail';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormData } from '../../@types/Form';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import * as Styled from './styles';
+import AsyncStorage, {
+  useAsyncStorage,
+} from '@react-native-async-storage/async-storage';
 
 export default function LoginMail() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+  const [dataUser, setdataUser] = useState({});
+
+  const { getItem } = useAsyncStorage('@passnotes:userRegister');
 
   const {
     control,
@@ -25,11 +33,72 @@ export default function LoginMail() {
     resolver: yupResolver(ValidationForm),
   });
 
-  function handleUserRegister(data: FormData) {
-    if (data) {
-      navigation.navigate('Home');
+  async function checkLogin() {
+    const user = await AsyncStorage.getItem('@passnotes:userlogued');
+
+    if (user) {
+      navigation.replace('Home');
+      // console.log(user);
     }
   }
+
+  async function handleLogin(data: FormData) {
+    try {
+      const response = await getItem();
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const dataUser = response ? JSON.parse(response) : [];
+      setdataUser(dataUser);
+
+      if (!response) {
+        Alert.alert('Erro', 'Não foi possível encontrar o usuário');
+        return;
+      }
+
+      // console.log('response:', response);
+
+      // if (
+      //   data.email === dataUser.email &&
+      //   data.password === dataUser.password
+      // ) {
+      //   console.log('Login realizado com sucesso!');
+      //   navigation.replace('Home');
+      //   await AsyncStorage.setItem(
+      //     '@passnotes:userlogued',
+      //     JSON.stringify(dataUser)
+      //   );
+      //   return;
+      // } else {
+      //   Alert.alert('Erro', 'Email ou senha incorretos!');
+      //   return false;
+      // }
+
+      const userVerified = dataUser.find((logued: any) => {
+        if (logued.email === data.email && logued.password === data.password) {
+          console.log('Login realizado com sucesso!');
+          navigation.replace('Home');
+          return true;
+        } else {
+          Alert.alert('Erro', 'Email ou senha incorretos!');
+          return null;
+        }
+      });
+
+      if (userVerified) {
+        await AsyncStorage.setItem(
+          '@passnotes:userlogued',
+          JSON.stringify(dataUser)
+        );
+        navigation.replace('Home');
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
 
   return (
     <SafeAreaView>
@@ -94,7 +163,7 @@ export default function LoginMail() {
                 icon={<IconArrowRight fill="#F8F9FA" width={15} height={20} />}
                 color="Blue"
                 format="square"
-                onPress={handleSubmit(handleUserRegister)}
+                onPress={handleSubmit(handleLogin)}
               />
             </Styled.SingInContainer>
             <Styled.LinkRegister>

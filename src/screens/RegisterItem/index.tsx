@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
-import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, StatusBar } from 'react-native';
+
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
@@ -15,10 +14,11 @@ import uuid from 'react-native-uuid';
 import { PropsCard } from '../../@types/Card';
 
 import * as Styled from './styles';
+import InfoHeader from '../../components/InfoHeader';
 
 export default function RegisterItem() {
   const id = uuid.v4();
-  const navigation = useNavigation();
+
   const [icon, setIcon] = useState({ icon: false });
   const [data, setData] = useState({
     id,
@@ -29,6 +29,7 @@ export default function RegisterItem() {
   } as PropsCard);
   const [success, setSuccess] = useState(false);
   const [alert, setAlert] = useState(false);
+
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
   const handleClear = () => {
@@ -79,22 +80,7 @@ export default function RegisterItem() {
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
 
         <Styled.Header>
-          <Styled.HeaderInfo>
-            <View>
-              <Styled.BoxUser>
-                <Styled.IconUser />
-                <Styled.Info>Olá,</Styled.Info>
-                <Styled.InfoName />
-              </Styled.BoxUser>
-            </View>
-
-            <View>
-              <Styled.SingOut onPress={() => navigation.goBack()}>
-                <IconArrowLeft width={15} height={15} />
-              </Styled.SingOut>
-            </View>
-          </Styled.HeaderInfo>
-
+          <InfoHeader />
           <Styled.ContentForm>
             <Styled.InputFieldContainer>
               <InputInfo
