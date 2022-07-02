@@ -21,6 +21,7 @@ import { PropsCard } from '../../@types/Card';
 import { useNavigation } from '@react-navigation/native';
 
 import * as Styled from './styles';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type InputProps = TextInputProps & {
   data: PropsCard;
@@ -32,7 +33,7 @@ export default function CardPass({
   data,
   ...rest
 }: InputProps) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [sec, setSec] = useState(secureTextEntry);
 
   const Iconsbrand = () => {

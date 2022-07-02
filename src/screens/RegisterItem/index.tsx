@@ -8,7 +8,9 @@ import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage, {
+  useAsyncStorage,
+} from '@react-native-async-storage/async-storage';
 import PopUp from '../../components/PopUp';
 import { messages } from '../../components/PopUp/Messages';
 import uuid from 'react-native-uuid';
@@ -29,6 +31,8 @@ export default function RegisterItem() {
   } as PropsCard);
   const [success, setSuccess] = useState(false);
   const [alert, setAlert] = useState(false);
+  const [user, setUser] = useState();
+
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
   const handleClear = () => {
@@ -40,6 +44,13 @@ export default function RegisterItem() {
       password: '',
     } as PropsCard);
   };
+
+  async function handleFetchData() {
+    const user = await AsyncStorage.getItem('@passnotes:userlogued');
+    const dataUser = user ? JSON.parse(user) : [];
+    const myObject = Object.assign({}, dataUser);
+    setUser(myObject[0].name);
+  }
 
   async function handleSubmit() {
     try {
@@ -73,6 +84,10 @@ export default function RegisterItem() {
     }
   }, [icon]);
 
+  useEffect(() => {
+    handleFetchData();
+  }, []);
+
   return (
     <>
       <SafeAreaView>
@@ -83,7 +98,7 @@ export default function RegisterItem() {
             <View>
               <Styled.BoxUser>
                 <Styled.IconUser />
-                <Styled.Info>Olá,</Styled.Info>
+                <Styled.Info>Olá, {user}</Styled.Info>
                 <Styled.InfoName />
               </Styled.BoxUser>
             </View>

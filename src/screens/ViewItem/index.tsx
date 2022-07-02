@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useEffect, useState } from 'react';
 
 import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
@@ -10,7 +11,9 @@ import InputInfoLogo from './InputInfoLogo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
 import uuid from 'react-native-uuid';
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage, {
+  useAsyncStorage,
+} from '@react-native-async-storage/async-storage';
 import { PropsCard } from '../../@types/Card';
 
 import * as Styled from './styles';
@@ -34,8 +37,16 @@ export default function ViewItem() {
   } as PropsCard);
   const [error, setError] = useState(false);
   const [sucess, setSucess] = useState(false);
+  const [user, setUser] = useState();
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
+
+  async function handleFetchData() {
+    const user = await AsyncStorage.getItem('@passnotes:userlogued');
+    const dataUser = user ? JSON.parse(user) : [];
+    const myObject = Object.assign({}, dataUser);
+    setUser(myObject[0].name);
+  }
 
   async function handleSubmit() {
     try {
@@ -90,6 +101,11 @@ export default function ViewItem() {
   useEffect(() => {
     setIcon(getLogo(itens?.logo));
   }, [itens.logo]);
+
+  useEffect(() => {
+    handleFetchData();
+  }, []);
+
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
@@ -98,7 +114,9 @@ export default function ViewItem() {
           <View>
             <Styled.BoxUser>
               <Styled.IconUser />
-              <Styled.Info>Olá,</Styled.Info>
+              <Styled.Info>
+                Olá, {user ? user : 'Usuario nao encontrado'}
+              </Styled.Info>
               <Styled.InfoName />
             </Styled.BoxUser>
           </View>
