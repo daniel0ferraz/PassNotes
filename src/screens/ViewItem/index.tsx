@@ -15,6 +15,7 @@ import uuid from 'react-native-uuid';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { PropsCard } from '../../@types/Card';
 import * as Styled from './styles';
+import { messages } from '../../components/PopUp/Messages';
 
 export default function ViewItem() {
   const navigation = useNavigation();
@@ -32,8 +33,8 @@ export default function ViewItem() {
     login: '',
     password: '',
   } as PropsCard);
-  const [error, setError] = useState(false);
-  const [sucess, setSucess] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
@@ -47,7 +48,6 @@ export default function ViewItem() {
         data.logo === ''
       ) {
         setError(true);
-
         return;
       } else {
         const response = await getItem();
@@ -166,16 +166,25 @@ export default function ViewItem() {
             </Button>
           </Styled.ButtonContainer>
         </Styled.ContentForm>
-        {sucess && (
-          <Styled.Alert>
-            <PopUp title="Senha registrada com sucesso!" alert="success" />
-          </Styled.Alert>
-        )}
-        {error && (
-          <Styled.Alert>
-            <PopUp title="Você deve preencher todos os dados" alert="alert" />
-          </Styled.Alert>
-        )}
+        <Styled.Alert>
+          {alert && (
+            <PopUp
+              showAlert={alert}
+              setShowAlert={setAlert}
+              title={messages[0].message}
+              alert={messages[0].type}
+            />
+          )}
+
+          {success && (
+            <PopUp
+              showAlert={success}
+              setShowAlert={setSuccess}
+              title={messages[1].message}
+              alert={messages[1].type}
+            />
+          )}
+        </Styled.Alert>
       </Styled.Header>
     </SafeAreaView>
   );
