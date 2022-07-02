@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React, { useEffect, useState } from 'react';
-
-import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import InputField from './../../components/InputField';
@@ -10,14 +9,12 @@ import InputInfo from '../../components/InputInfo';
 import InputInfoLogo from './InputInfoLogo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
-import uuid from 'react-native-uuid';
-import AsyncStorage, {
-  useAsyncStorage,
-} from '@react-native-async-storage/async-storage';
-import { PropsCard } from '../../@types/Card';
-
-import * as Styled from './styles';
 import PopUp from '../../components/PopUp';
+import InfoHeader from './../../components/InfoHeader';
+import uuid from 'react-native-uuid';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { PropsCard } from '../../@types/Card';
+import * as Styled from './styles';
 
 export default function ViewItem() {
   const navigation = useNavigation();
@@ -37,16 +34,8 @@ export default function ViewItem() {
   } as PropsCard);
   const [error, setError] = useState(false);
   const [sucess, setSucess] = useState(false);
-  const [user, setUser] = useState();
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
-
-  async function handleFetchData() {
-    const user = await AsyncStorage.getItem('@passnotes:userlogued');
-    const dataUser = user ? JSON.parse(user) : [];
-    const myObject = Object.assign({}, dataUser);
-    setUser(myObject[0].name);
-  }
 
   async function handleSubmit() {
     try {
@@ -102,31 +91,11 @@ export default function ViewItem() {
     setIcon(getLogo(itens?.logo));
   }, [itens.logo]);
 
-  useEffect(() => {
-    handleFetchData();
-  }, []);
-
   return (
     <SafeAreaView>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
       <Styled.Header>
-        <Styled.HeaderInfo>
-          <View>
-            <Styled.BoxUser>
-              <Styled.IconUser />
-              <Styled.Info>
-                Olá, {user ? user : 'Usuario nao encontrado'}
-              </Styled.Info>
-              <Styled.InfoName />
-            </Styled.BoxUser>
-          </View>
-
-          <View>
-            <Styled.SingOut onPress={() => navigation.goBack()}>
-              <IconArrowLeft width={15} height={15} />
-            </Styled.SingOut>
-          </View>
-        </Styled.HeaderInfo>
+        <InfoHeader />
 
         <Styled.ContentForm>
           <Styled.InputFieldContainer>

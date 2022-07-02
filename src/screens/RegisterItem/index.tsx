@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-import { View, SafeAreaView, StatusBar, Alert } from 'react-native';
-import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, StatusBar } from 'react-native';
+
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
 import { getLogo } from '../../components/InputInfo/logo';
-import AsyncStorage, {
-  useAsyncStorage,
-} from '@react-native-async-storage/async-storage';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import PopUp from '../../components/PopUp';
 import { messages } from '../../components/PopUp/Messages';
 import uuid from 'react-native-uuid';
 import { PropsCard } from '../../@types/Card';
 
 import * as Styled from './styles';
+import InfoHeader from '../../components/InfoHeader';
 
 export default function RegisterItem() {
   const id = uuid.v4();
-  const navigation = useNavigation();
+
   const [icon, setIcon] = useState({ icon: false });
   const [data, setData] = useState({
     id,
@@ -31,7 +29,6 @@ export default function RegisterItem() {
   } as PropsCard);
   const [success, setSuccess] = useState(false);
   const [alert, setAlert] = useState(false);
-  const [user, setUser] = useState();
 
   const { getItem, setItem } = useAsyncStorage('@passnotes:passwords');
 
@@ -44,13 +41,6 @@ export default function RegisterItem() {
       password: '',
     } as PropsCard);
   };
-
-  async function handleFetchData() {
-    const user = await AsyncStorage.getItem('@passnotes:userlogued');
-    const dataUser = user ? JSON.parse(user) : [];
-    const myObject = Object.assign({}, dataUser);
-    setUser(myObject[0].name);
-  }
 
   async function handleSubmit() {
     try {
@@ -84,32 +74,13 @@ export default function RegisterItem() {
     }
   }, [icon]);
 
-  useEffect(() => {
-    handleFetchData();
-  }, []);
-
   return (
     <>
       <SafeAreaView>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
 
         <Styled.Header>
-          <Styled.HeaderInfo>
-            <View>
-              <Styled.BoxUser>
-                <Styled.IconUser />
-                <Styled.Info>Olá, {user}</Styled.Info>
-                <Styled.InfoName />
-              </Styled.BoxUser>
-            </View>
-
-            <View>
-              <Styled.SingOut onPress={() => navigation.goBack()}>
-                <IconArrowLeft width={15} height={15} />
-              </Styled.SingOut>
-            </View>
-          </Styled.HeaderInfo>
-
+          <InfoHeader />
           <Styled.ContentForm>
             <Styled.InputFieldContainer>
               <InputInfo
