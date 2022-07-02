@@ -18,10 +18,11 @@ import uuid from 'react-native-uuid';
 import * as Styled from './styles';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import { Input } from '../../components/Input';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export default function RegisterMail() {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const id = uuid.v4();
-  const navigation = useNavigation();
 
   const [data, setData] = useState({
     id,
@@ -56,8 +57,12 @@ export default function RegisterMail() {
 
         const newData = [...previousData, data];
         await setItem(JSON.stringify(newData));
-        Alert.alert('Cadastro realizado com sucesso!');
-        navigation.navigate('LoginMail');
+        Alert.alert(
+          'Cadastro realizado com sucesso!',
+          'E-mail: ' + data.email + '\nSenha: ' + data.password,
+          [{ text: 'OK', onPress: () => navigation.navigate('LoginMail') }]
+        );
+        // ;
       }
     } catch (error) {
       Alert.alert('Erro ao cadastrar usuário');
