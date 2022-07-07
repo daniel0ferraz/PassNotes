@@ -10,6 +10,9 @@ import RegisterMail from './../screens/RegisterMail';
 import Home from '../screens/Home';
 import RegisterItem from '../screens/RegisterItem';
 import ViewItem from '../screens/ViewItem';
+import About from './../screens/Onboarding/About';
+import AboutApp from './../screens/Onboarding/AboutApp';
+import Welcome from '../screens/Onboarding/Welcome';
 
 export function StackRoutes() {
   return (
@@ -18,13 +21,17 @@ export function StackRoutes() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Screen name="LoginHub" component={LoginHub} />
+        <Screen name="About" component={About} />
+        {/* <Screen name="AboutApp" component={AboutApp} /> */}
+        {/* <Screen name="Welcome" component={Welcome} /> */}
+
+        {/* <Screen name="LoginHub" component={LoginHub} />
         <Screen name="LoginMail" component={LoginMail} />
         <Screen name="ForgotPassword" component={ForgotPassword} />
         <Screen name="RegisterMail" component={RegisterMail} />
         <Screen name="Home" component={Home} />
         <Screen name="RegisterItem" component={RegisterItem} />
-        <Screen name="ViewItem" component={ViewItem} />
+        <Screen name="ViewItem" component={ViewItem} /> */}
       </Navigator>
     </>
   );
