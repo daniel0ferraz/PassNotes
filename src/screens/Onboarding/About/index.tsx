@@ -14,7 +14,7 @@ export default function About() {
         </Styled.Subtitle>
         <Styled.SubtitleInfo>
           Todas suas senhas são armazenadas em nuvem. Não esqueça que este é um
-          projeto de estudo não um produto real.
+          projeto de estudo não um produto real..
         </Styled.SubtitleInfo>
       </Styled.Container>
     </>
