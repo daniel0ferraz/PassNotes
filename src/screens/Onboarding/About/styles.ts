@@ -1,8 +1,15 @@
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+export const Content = styled.View`
   ${({ theme }) => css`
     flex: 1;
+    justify-content: center;
+    background: ${theme.colors.white};
+  `}
+`;
+
+export const Container = styled.View`
+  ${({ theme }) => css`
     justify-content: center;
     padding: 38px 32px 121px 32px;
     background: ${theme.colors.white};

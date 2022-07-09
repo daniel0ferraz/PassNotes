@@ -1,8 +1,15 @@
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+export const Content = styled.View`
   ${({ theme }) => css`
     flex: 1;
+    justify-content: center;
+    background: ${theme.colors.white};
+  `}
+`;
+
+export const Container = styled.View`
+  ${({ theme }) => css`
     justify-content: center;
     padding: 38px 32px 121px 32px;
     background: ${theme.colors.white};
@@ -34,11 +41,7 @@ export const BoxItens = styled.View`
 `;
 
 export const Icon = styled.View`
-  width: 20px;
-  height: 20px;
   margin-right: 9px;
-  border-radius: 50px;
-  background: #339af0;
   align-items: center;
 `;
 
