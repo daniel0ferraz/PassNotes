@@ -9,4 +9,8 @@ export const Container = styled.View`
   `}
 `;
 
-export const Icon = styled.Text``;
+export const Icon = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;

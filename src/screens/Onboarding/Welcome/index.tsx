@@ -8,7 +8,7 @@ export default function Welcome() {
   return (
     <Styled.Content>
       <View>
-        <Header icon="Icon03" iconWidth={177} iconHeigth={322} />
+        <Header icon="Icon05" iconWidth={315.56} iconHeigth={327.19} />
       </View>
       <Styled.Container>
         <Styled.ContainerInfo>

@@ -8,7 +8,7 @@ export default function AboutApp() {
   return (
     <Styled.Content>
       <View>
-        <Header icon="Icon03" iconWidth={177} iconHeigth={322} />
+        <Header icon="Icon04" iconWidth={338} iconHeigth={359} />
       </View>
       <Styled.Container>
         <Styled.Title>O que podemos oferecer?</Styled.Title>

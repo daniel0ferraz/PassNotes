@@ -8,7 +8,7 @@ export default function About() {
     <>
       <Styled.Content>
         <View>
-          <Header icon="Icon03" iconWidth={177} iconHeigth={322} />
+          <Header icon="Icon03" iconWidth={320} iconHeigth={371.2} />
         </View>
         <Styled.Container>
           <Styled.Title>Afinal, para que serve o PassNotes?</Styled.Title>

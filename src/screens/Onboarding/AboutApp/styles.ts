@@ -5,6 +5,7 @@ export const Content = styled.View`
     flex: 1;
     justify-content: center;
     background: ${theme.colors.white};
+    background: red;
   `}
 `;
 
