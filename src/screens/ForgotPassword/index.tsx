@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
-import IlustrationLogin from '../../assets/ilustration-esqueci-senha.svg';
+import IlustrationLogin from '../../assets/Login/forgot-pass.svg';
 import Button from '../../components/Button';
 import IconMail from '../../assets/icon-mail.svg';
 import { useNavigation } from '@react-navigation/native';
@@ -36,26 +36,17 @@ export default function ForgotPassword() {
       <StatusBar barStyle={'light-content'} backgroundColor="#1C7ED6" />
       <Styled.Container>
         <Styled.ContainerContent>
-          <Styled.ContainerInfo>
-            <Styled.ButtonGoback onPress={() => navigation.goBack()}>
-              <IconArrowLeft width={15} height={15} />
-            </Styled.ButtonGoback>
-
-            <Styled.BoxText>
-              <Styled.TitleBox>
-                Olá, Cadastre-se para começarmos
-              </Styled.TitleBox>
-            </Styled.BoxText>
-          </Styled.ContainerInfo>
-
-          <Styled.ContainerLogo>
-            <IlustrationLogin width={380} height={252} />
-          </Styled.ContainerLogo>
+          <Styled.ButtonGoback onPress={() => navigation.goBack()}>
+            <IconArrowLeft width={15} height={15} />
+          </Styled.ButtonGoback>
         </Styled.ContainerContent>
+
+        <Styled.ContainerLogo>
+          <IlustrationLogin width={194} height={317} />
+        </Styled.ContainerLogo>
 
         <Styled.ContainerForm>
           <Styled.SingInContainer>
-            <Styled.SingInText>Esqueceu a senha? </Styled.SingInText>
             <Styled.SingInLegend>
               Não se preocupe. Por favor insira o email cadastrado na sua conta.
             </Styled.SingInLegend>
@@ -72,14 +63,12 @@ export default function ForgotPassword() {
               error={errors.email}
             />
           </Styled.ContentInput>
+
           <Styled.LinkRegister>
             <Button
-              textColor="Bluetxt"
-              color="Blue100"
-              onPress={() => navigation.goBack()}>
-              Voltar
-            </Button>
-            <Button onPress={() => handleSubmit(handleUserRegister)}>
+              color="Blue"
+              style={{ width: '100%', height: 48, marginBottom: 16 }}
+              onPress={() => console.log('enviar')}>
               Enviar
             </Button>
           </Styled.LinkRegister>

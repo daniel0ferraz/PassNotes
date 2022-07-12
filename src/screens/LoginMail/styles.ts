@@ -10,70 +10,43 @@ export const Container = styled.View`
 
 export const ContainerContent = styled.View`
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const BoxText = styled.View`
-  width: 131px;
-  height: 80px;
-`;
-
-export const TitleBox = styled.Text`
-  ${({ theme }) => css`
-    font-size: 20px;
-    font-family: ${theme.fonts.Lexend900};
-    color: #ffffff;
-    line-height: 30px;
-    align-items: center;
-  `}
-`;
-
-export const BoxLegend = styled.View`
-  width: 93px;
-  height: 61px;
-  margin-top: 16px;
-`;
-
-export const LegendText = styled.Text`
-  ${({ theme }) => css`
-    font-size: 12px;
-    line-height: 22px;
-    color: #f8f9fa;
-    font-family: ${theme.fonts.Lexend400};
-  `}
+  margin: 10px 0px 0px 10px;
 `;
 
 export const ContainerInfo = styled.View`
-  padding: 30px 0px 20px 18px;
+  /* padding: 30px 0px 20px 18px; */
 `;
 
 export const ContainerLogo = styled.View`
-  width: 240px;
-  height: 245px;
-  top: 130px;
-  left: -25px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 194px;
+  height: 317px;
+  left: 98px;
+  top: 52px;
 `;
 
 export const ButtonGoback = styled.TouchableOpacity`
-  padding-bottom: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
 `;
 
 export const ContainerForm = styled.View`
-  padding: 40px 20px;
-  margin-top: 150px;
+  padding: 22px 20px;
+  margin-top: 353px;
 `;
 
 export const ContentInput = styled.View`
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 `;
 
 export const SingInContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  padding-bottom: 32px;
 `;
 
 export const SingInText = styled.Text`

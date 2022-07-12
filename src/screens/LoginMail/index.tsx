@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, SafeAreaView, ScrollView, StatusBar } from 'react-native';
+import { Alert, SafeAreaView, ScrollView, StatusBar, View } from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
-import IlustrationLogin from '../../assets/ilustration-login.svg';
+import Login from '../../assets/Login/login.svg';
 import IconMail from '../../assets/icon-mail.svg';
 import IconLock from '../../assets/icon-lock.svg';
+import IconGoogle from '../../assets/icon-google.svg';
 import ButtonIcon from '../../components/ButtonIcon';
 import ControlledInput from '../../components/ControlledInput';
 import { useNavigation } from '@react-navigation/native';
@@ -18,6 +19,7 @@ import * as Styled from './styles';
 import AsyncStorage, {
   useAsyncStorage,
 } from '@react-native-async-storage/async-storage';
+import ButtonSocial from '../../components/ButtonSocial';
 
 export default function LoginMail() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -113,25 +115,14 @@ export default function LoginMail() {
         }}>
         <Styled.Container>
           <Styled.ContainerContent>
-            <Styled.ContainerInfo>
-              <Styled.ButtonGoback onPress={() => navigation.goBack()}>
-                <IconArrowLeft width={15} height={15} />
-              </Styled.ButtonGoback>
-
-              <Styled.BoxText>
-                <Styled.TitleBox>Olá, seja bem-vindo!</Styled.TitleBox>
-              </Styled.BoxText>
-
-              <Styled.BoxLegend>
-                <Styled.LegendText>
-                  Estavamos com saudades de você
-                </Styled.LegendText>
-              </Styled.BoxLegend>
-            </Styled.ContainerInfo>
-            <Styled.ContainerLogo>
-              <IlustrationLogin width={326} height={270} />
-            </Styled.ContainerLogo>
+            <Styled.ButtonGoback onPress={() => navigation.goBack()}>
+              <IconArrowLeft width={15} height={15} />
+            </Styled.ButtonGoback>
           </Styled.ContainerContent>
+
+          <Styled.ContainerLogo>
+            <Login width={194} height={317} />
+          </Styled.ContainerLogo>
 
           <Styled.ContainerForm>
             <Styled.ContentInput>
@@ -156,6 +147,14 @@ export default function LoginMail() {
               />
             </Styled.ContentInput>
 
+            <View style={{ marginBottom: 36 }}>
+              <ButtonSocial
+                onPress={() => console.log('google')}
+                icon={<IconGoogle width={23} height={23} />}>
+                Entrar com o Google
+              </ButtonSocial>
+            </View>
+
             <Styled.SingInContainer>
               <Styled.SingInText>Login</Styled.SingInText>
 
@@ -166,6 +165,7 @@ export default function LoginMail() {
                 onPress={handleSubmit(handleLogin)}
               />
             </Styled.SingInContainer>
+
             <Styled.LinkRegister>
               <Styled.ButtonLink
                 onPress={() => navigation.navigate('RegisterMail')}>
@@ -174,7 +174,7 @@ export default function LoginMail() {
 
               <Styled.ButtonLink
                 onPress={() => navigation.navigate('ForgotPassword')}>
-                <Styled.TextLink>Esqueci a senha</Styled.TextLink>
+                <Styled.TextLink>Esqueci minha senha</Styled.TextLink>
               </Styled.ButtonLink>
             </Styled.LinkRegister>
           </Styled.ContainerForm>

@@ -14,6 +14,7 @@ import About from './../screens/Onboarding/About';
 import AboutApp from './../screens/Onboarding/AboutApp';
 import Welcome from '../screens/Onboarding/Welcome';
 import Onboarding from '../screens/Onboarding';
+import ForgotPasswordSucess from './../screens/ForgotPassSucess';
 
 export function StackRoutes() {
   return (
@@ -22,18 +23,20 @@ export function StackRoutes() {
         screenOptions={{
           headerShown: false,
         }}>
+        <Screen name="ForgotPassSucess" component={ForgotPasswordSucess} />
         <Screen name="Onboarding" component={Onboarding} />
-        {/* <Screen name="About" component={About} /> */}
-        {/* <Screen name="AboutApp" component={AboutApp} /> */}
-        {/* <Screen name="Welcome" component={Welcome} /> */}
+        <Screen name="About" component={About} />
+        <Screen name="AboutApp" component={AboutApp} />
+        <Screen name="Welcome" component={Welcome} />
 
-        {/* <Screen name="LoginHub" component={LoginHub} />
+        <Screen name="LoginHub" component={LoginHub} />
         <Screen name="LoginMail" component={LoginMail} />
         <Screen name="ForgotPassword" component={ForgotPassword} />
         <Screen name="RegisterMail" component={RegisterMail} />
+
         <Screen name="Home" component={Home} />
         <Screen name="RegisterItem" component={RegisterItem} />
-        <Screen name="ViewItem" component={ViewItem} /> */}
+        <Screen name="ViewItem" component={ViewItem} />
       </Navigator>
     </>
   );

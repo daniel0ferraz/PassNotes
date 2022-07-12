@@ -1,10 +1,16 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { View } from 'react-native';
 import Button from '../../../components/Button';
 import Header from '../components/Header';
 import * as Styled from './styles';
+import RegisterMail from './../../RegisterMail/index';
+import LoginMail from './../../LoginMail/index';
 
 export default function Welcome() {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
+
   return (
     <Styled.Content>
       <View>
@@ -23,7 +29,7 @@ export default function Welcome() {
           <Button
             color="Blue"
             style={{ width: 327, height: 48, marginBottom: 16 }}
-            onPress={() => console.log('login')}>
+            onPress={() => navigation.navigate('LoginMail')}>
             Login
           </Button>
 
@@ -31,7 +37,7 @@ export default function Welcome() {
             color="Blue100"
             textColor="Bluetxt"
             style={{ width: 327, height: 48 }}
-            onPress={() => console.log('cadastro')}>
+            onPress={() => navigation.navigate('RegisterMail')}>
             Cadastro
           </Button>
         </Styled.ContainerButtons>
