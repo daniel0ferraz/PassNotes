@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Maria Tereza Rodrigues",
+      "email": "mariaterezaa@hotmail.com",
+      "password": "1234teste",
+      "avatar_url": "https://scontent.fssa2-1.fna.fbcdn.net/v/t39.30808-1/270105282_111072994774753_3591769668144820878_n.jpg?stp=dst-jpg_p200x200&_nc_cat=102&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeGDcJSTSUC4ScvwODK6jYnYx5DA-GBYC8nHkMD4YFgLybl884q85_Ea4fgVtUsLiwNxwBnticFuUe20VLOHSPva&_nc_ohc=LvZUnsQhEykAX_bZDQ-&_nc_ht=scontent.fssa2-1.fna&oh=00_AT820Lj76JMHFSYyImecg_4HAARG8InlOaR0rp0V9Ih6ew&oe=63101120"
+    },
+    {
+      "id": 2,
+      "name": "Daniel Ferraz Coelho",
+      "email": "daniel0ferraz@outlook.com",
+      "password": "1234teste",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50385288?v=4"
+    }
+  ],
+  "passwords": [
+    {
+      "nameSite": "Figma",
+      "url": "www",
+      "email": "wwww",
+      "password": "wwww",
+      "created_at": "Wed Aug 31 2022 22:11:35 GMT-0300 (-03)",
+      "password_id": 2,
+      "id": 3
+    }
+  ]
+}

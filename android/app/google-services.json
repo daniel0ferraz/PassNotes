@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "117684262575",
+    "project_id": "passnotes-53d89",
+    "storage_bucket": "passnotes-53d89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117684262575:android:065d7272b90d3dfbd9a65a",
+        "android_client_info": {
+          "package_name": "com.passnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117684262575-54ufk4nd67ot2929c8sammt6rgfhjese.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDfvJGi7DYSIPqP6qA5vBUEggxqhGcEbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117684262575-54ufk4nd67ot2929c8sammt6rgfhjese.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
