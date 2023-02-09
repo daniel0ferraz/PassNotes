@@ -14,5 +14,5 @@ https://www.figma.com/file/LhxLub4BpSZKHuX2gmJutK/PassNotes?node-id=1%3A2
 - Typescript
 - Async Storage
 - Firebase Authentication
-- Firenbase Firestore
+- Firebase Firestore
 - App Distribuition
