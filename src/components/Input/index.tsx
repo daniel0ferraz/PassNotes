@@ -26,8 +26,8 @@ export function Input({icon, value, ...rest}: InputProps) {
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         isFocused={isFocused}
-        secureTextEntry
         value={value}
+        secureTextEntry={true}
         {...rest}
       />
     </Container>

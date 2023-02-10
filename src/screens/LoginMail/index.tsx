@@ -90,12 +90,12 @@ export default function LoginMail() {
                 value={dataUser.password}
                 icon={<IconLock width={20} height={21} />}
                 placeholder="Digite sua senha"
-                keyboardType="email-address"
+                keyboardType="default"
                 autoCapitalize="none"
+                secureTextEntry
                 onChangeText={text =>
                   setdataUser({...dataUser, password: text})
                 }
-                secureTextEntry={true}
               />
             </Styled.ContentInput>
             {/* 
