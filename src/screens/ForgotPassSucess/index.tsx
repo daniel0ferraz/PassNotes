@@ -1,7 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
 import IconSuccessPass from '../../assets/Login/forgot-pass-success.svg';
 import Button from '../../components/Button';
 import * as Styled from './styles';
@@ -9,7 +14,10 @@ import * as Styled from './styles';
 export default function ForgotPassSucess() {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <SafeAreaView>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      enabled>
       <StatusBar barStyle={'light-content'} backgroundColor="#228BE6" />
       <Styled.Container>
         <Styled.BoxLogo>
@@ -29,7 +37,7 @@ export default function ForgotPassSucess() {
 
         <Styled.ContainerButton>
           <Button
-            style={{ width: '100%' }}
+            style={{width: '100%'}}
             size="Medium"
             onPress={() => {
               navigation.navigate('LoginMail');
@@ -38,6 +46,6 @@ export default function ForgotPassSucess() {
           </Button>
         </Styled.ContainerButton>
       </Styled.Container>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }

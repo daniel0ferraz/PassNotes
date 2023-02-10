@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  View,
+} from 'react-native';
 import IconArrowLeft from '../../assets/icon-arrowLeft.svg';
 import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import Login from '../../assets/Login/login.svg';
@@ -54,7 +62,10 @@ export default function LoginMail() {
   }
 
   return (
-    <SafeAreaView>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      enabled>
       <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
       <ScrollView
         decelerationRate={'normal'}
@@ -134,6 +145,6 @@ export default function LoginMail() {
           </Styled.ContainerForm>
         </Styled.Container>
       </ScrollView>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }

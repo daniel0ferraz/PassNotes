@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
-import {Alert, SafeAreaView, StatusBar, View} from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  View,
+} from 'react-native';
 
 import InputField from './../../components/InputField';
 import Button from '../../components/Button';
@@ -122,7 +129,10 @@ export default function RegisterItem() {
 
   return (
     <>
-      <SafeAreaView>
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled>
         <StatusBar barStyle={'light-content'} backgroundColor="#1971C2" />
 
         <Styled.Header>
@@ -247,7 +257,7 @@ export default function RegisterItem() {
             )}
           </Styled.Alert>
         </Styled.Header>
-      </SafeAreaView>
+      </KeyboardAvoidingView>
     </>
   );
 }

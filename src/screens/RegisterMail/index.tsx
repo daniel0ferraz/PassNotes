@@ -9,7 +9,15 @@ import IconArrowRight from '../../assets/icon-arrowRight.svg';
 import ControlledInput from './../../components/ControlledInput';
 
 import ButtonIcon from '../../components/ButtonIcon';
-import {Alert, SafeAreaView, ScrollView, StatusBar, Text} from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+} from 'react-native';
 import {useForm} from 'react-hook-form';
 import {ValidationForm} from '../../validations/FormData';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -23,6 +31,7 @@ import Header from './components/Header';
 import Button from './../../components/Button';
 import ForgotPassSucess from '../ForgotPassSucess';
 import {firebase} from '@react-native-firebase/auth';
+import md5 from 'md5';
 
 export default function RegisterMail() {
   const [data, setData] = useState({
@@ -57,8 +66,13 @@ export default function RegisterMail() {
     }
   }
 
+  console.log('md5', md5(data.password));
+
   return (
-    <SafeAreaView>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      enabled>
       <StatusBar barStyle={'light-content'} backgroundColor="#228BE6" />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -111,6 +125,6 @@ export default function RegisterMail() {
           </Styled.ContainerForm>
         </>
       </ScrollView>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
