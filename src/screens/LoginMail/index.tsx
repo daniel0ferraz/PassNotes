@@ -26,7 +26,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import * as Styled from './styles';
 import ButtonSocial from '../../components/ButtonSocial';
 import {Input} from '../../components/Input';
-import Loader from '../../components/Loader';
+
 import auth from '@react-native-firebase/auth';
 
 export default function LoginMail() {
@@ -41,9 +41,9 @@ export default function LoginMail() {
     setLoading(true);
     const singIn = auth()
       .signInWithEmailAndPassword(dataUser.email, dataUser.password)
-      .then(res => {
+      .then(()=> {
         setLoading(false);
-        console.log('Login com sucesso:', res);
+        
       })
       .catch(error => {
         setLoading(false);

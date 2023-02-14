@@ -5,7 +5,7 @@ const {Screen, Navigator} = createNativeStackNavigator();
 
 import Home from '../screens/Home';
 import RegisterItem from '../screens/RegisterItem';
-import ViewItem from '../screens/ViewItem';
+
 
 export function StackRoutes() {
   return (
@@ -16,7 +16,7 @@ export function StackRoutes() {
         }}>
         <Screen name="Home" component={Home} />
         <Screen name="RegisterItem" component={RegisterItem} />
-        <Screen name="ViewItem" component={ViewItem} />
+
       </Navigator>
     </>
   );

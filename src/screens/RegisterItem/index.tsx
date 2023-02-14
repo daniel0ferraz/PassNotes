@@ -13,7 +13,7 @@ import InputField from './../../components/InputField';
 import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
-import {getLogo} from '../../components/InputInfo/logo';
+
 
 import PopUp from '../../components/PopUp';
 import {messages} from '../../components/PopUp/Messages';
@@ -35,8 +35,7 @@ export default function RegisterItem() {
   const itens = route.params as PropsCard;
 
   const dataUser = firebase.auth().currentUser as FirebaseAuthTypes.User;
-  console.log(dataUser.uid);
-
+  
   const [icon, setIcon] = useState({icon: false});
   const [data, setData] = useState({
     nameSite: itens?.nameSite || '',
@@ -127,6 +126,9 @@ export default function RegisterItem() {
     }
   }, [icon]);
 
+
+  console.log("Icone:", icon)
+
   return (
     <>
       <KeyboardAvoidingView
@@ -144,9 +146,8 @@ export default function RegisterItem() {
                 value={data.nameSite.trim()}
                 onChangeText={(text: string) => {
                   setData({...data, nameSite: text});
-                  setIcon(getLogo(text));
                 }}
-                icon={icon?.icon}
+                icon={data.nameSite.trim()}
               />
             </Styled.InputFieldContainer>
 

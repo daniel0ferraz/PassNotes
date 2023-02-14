@@ -31,7 +31,7 @@ import Header from './components/Header';
 import Button from './../../components/Button';
 import ForgotPassSucess from '../ForgotPassSucess';
 import {firebase} from '@react-native-firebase/auth';
-import md5 from 'md5';
+
 
 export default function RegisterMail() {
   const [data, setData] = useState({
@@ -65,8 +65,6 @@ export default function RegisterMail() {
       Alert.alert('Erro ao cadastrar usuário');
     }
   }
-
-  console.log('md5', md5(data.password));
 
   return (
     <KeyboardAvoidingView
