@@ -35,8 +35,7 @@ export default function RegisterItem() {
   const itens = route.params as PropsCard;
 
   const dataUser = firebase.auth().currentUser as FirebaseAuthTypes.User;
-  
-  const [icon, setIcon] = useState({icon: false});
+
   const [data, setData] = useState({
     nameSite: itens?.nameSite || '',
     url: itens?.url || '',
@@ -119,15 +118,6 @@ export default function RegisterItem() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (!icon) {
-      setIcon({icon: true});
-    }
-  }, [icon]);
-
-
-  console.log("Icone:", icon)
 
   return (
     <>
