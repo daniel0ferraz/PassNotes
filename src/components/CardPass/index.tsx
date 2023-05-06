@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-import {TextInputProps} from 'react-native';
+import {Alert, TextInputProps, ToastAndroid} from 'react-native';
 
 import IconEye from '../../assets/icon-eye.svg';
 import IconEyeOff from '../../assets/icon-eye_off.svg';
@@ -11,7 +11,9 @@ import {useNavigation} from '@react-navigation/native';
 
 import * as Styled from './styles';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { logoSite } from '../../utils/icons';
+import {logoSite} from '../../utils/icons';
+
+import Clipboard from '@react-native-clipboard/clipboard';
 
 export type InputProps = TextInputProps & {
   data: PropsCard;
@@ -22,7 +24,26 @@ export default function CardPass({secureTextEntry, data, ...rest}: InputProps) {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [sec, setSec] = useState(secureTextEntry);
 
-  
+  const showToast = () => {
+    ToastAndroid.showWithGravity(
+      'Senha copiada',
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER,
+    );
+  };
+
+  async function handleCopyToClipboard() {
+    Clipboard.setString(data.password);
+  }
+
+  useEffect(() => {
+    const subscription = Clipboard.addListener(() => {
+      showToast();
+    });
+
+    return () => subscription.remove();
+  }, []);
+
   return (
     <>
       <Styled.Card onPress={() => navigation.navigate('RegisterItem', data)}>
@@ -43,7 +64,7 @@ export default function CardPass({secureTextEntry, data, ...rest}: InputProps) {
           )}
         </Styled.IconButton>
 
-        <Styled.IconButton>
+        <Styled.IconButton onPress={handleCopyToClipboard}>
           <IconCopy width={20} height={20} />
         </Styled.IconButton>
       </Styled.Card>

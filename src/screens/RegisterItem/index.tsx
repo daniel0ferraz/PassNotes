@@ -14,7 +14,6 @@ import Button from '../../components/Button';
 import InputInfo from '../../components/InputInfo';
 import InputInfo2 from '../../components/InputInfo2';
 
-
 import PopUp from '../../components/PopUp';
 import {messages} from '../../components/PopUp/Messages';
 
@@ -171,6 +170,7 @@ export default function RegisterItem() {
                 iconSecAlone={itens ? false : true}
                 iconCopyPast={itens ? true : false}
                 iconSec={itens ? true : false}
+                valueInput={data.password}
               />
             </Styled.InputFieldContainer>
 
